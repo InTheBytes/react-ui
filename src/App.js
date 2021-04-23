@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import NavigationBar from "./components/Header/NavigationBar";
+import Sidebar from "./components/SideBar/SideBar";
+
+import Home from "./components/Home";
+import Page404 from "./components/Error/Page404";
+
+function App(props) {
+
+    const [sideDrawer, setSideDrawer] = React.useState(false);
+
+    return (
+        <BrowserRouter>
+            <div className="App">
+                <NavigationBar setDrawer={setSideDrawer} />
+                <Sidebar drawer={sideDrawer} setDrawer={setSideDrawer} />
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route component={Page404} />
+                </Switch>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;

@@ -1,0 +1,13 @@
+#sortPanel {
+	float: left;
+}
+#sortPanel label:after {
+	content: "\A";
+	white-space: pre;
+}
+#foodList {
+	float: left;
+}
+#foodList ul {
+	list-style-type: none;
+}
