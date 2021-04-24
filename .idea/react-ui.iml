@@ -9,7 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="4513dc9fc7" level="application" />
-    <orderEntry type="library" name="@fortawesome/fontawesome-free" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
   </component>
 </module>

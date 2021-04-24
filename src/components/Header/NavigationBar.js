@@ -39,23 +39,24 @@ function NavigationBar(props) {
 							id="menu-appbar"
 							anchorEl={anchorEl}
 							anchorOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
+								vertical: 'bottom',
+								horizontal: 'center',
 							}}
 							keepMounted
+							getContentAnchorEl={null}
 							transformOrigin={{
 								vertical: 'top',
-								horizontal: 'right',
+								horizontal: 'center',
 							}}
 							open={open}
 							onClose={handleClose}
 						>
-						{auth ? (<>
+						{auth ? (
+							<MenuItem component={RouterLink} onClick={handleClose} to="/logout">Logout</MenuItem>
+						) : (<>
 							<MenuItem component={RouterLink} onClick={handleClose} to="/login">Login</MenuItem>
 							<MenuItem component={RouterLink} onClick={handleClose} to="/register">Sign Up</MenuItem>
-						</>) : (
-							<MenuItem component={RouterLink} onClick={handleClose} to="/logout">Logout</MenuItem>
-						)}
+						</>)}
 						</Menu>
 					</div>
 			</Toolbar>
