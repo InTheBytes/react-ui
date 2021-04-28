@@ -1,0 +1,32 @@
+ul.resultList {
+	list-style-type: none;
+	width: 500px;
+	background-color: #2699FB;
+	padding: 1px 20px;
+	margin: 0 auto;
+}
+
+.resultList li a {
+	display: block;
+	width: 100%;
+	height: 50px;
+	background-color: white;
+	margin: 20px 0;
+	line-height: 50px;
+	text-align: center;
+}
+
+.resultList li a .resultImage {
+	float: left;
+	margin-left: 20px;
+}
+
+.resultList li a .resultName {
+	float: left;
+	margin-left: 20px;
+}
+
+.resultList li a .resultDetail {
+	float: right;
+	margin-right: 50px;
+}

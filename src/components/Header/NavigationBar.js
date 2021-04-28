@@ -1,11 +1,10 @@
 import React from 'react';
 import "./NavigationBar.css";
-import Icon from '@material-ui/core/Icon';
-import {AppBar, IconButton, Toolbar, Menu, MenuItem} from "@material-ui/core";
+import {AppBar, IconButton, Toolbar, Menu, MenuItem, Icon} from "@material-ui/core";
 import {Link as RouterLink} from 'react-router-dom';
 
 function NavigationBar(props) {
-	const [auth, setAuth] = React.useState(true);
+	const [auth, setAuth] = React.useState(false);
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 

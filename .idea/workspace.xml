@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40b7054b-ec61-4375-86df-69279523c29a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/react-ui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/react-ui.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/NavigationBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewSearch.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/ViewResults.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/ViewResults.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -63,6 +60,7 @@
       <recent name="C:\Users\mosaa\Desktop\Workbench\SmoothStack\Scrumptious\react-ui\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mosaa\Desktop\Workbench\SmoothStack\Scrumptious\react-ui\src\components\Search" />
       <recent name="C:\Users\mosaa\Desktop\Workbench\SmoothStack\Scrumptious\react-ui\src\components" />
       <recent name="C:\Users\mosaa\Desktop\Workbench\SmoothStack\Scrumptious\react-ui\src\components\Header" />
     </key>
@@ -138,7 +136,8 @@
       <workItem from="1619204764756" duration="11000" />
       <workItem from="1619204784930" duration="5000" />
       <workItem from="1619205163344" duration="6889000" />
-      <workItem from="1619290599609" duration="1630000" />
+      <workItem from="1619290599609" duration="2970000" />
+      <workItem from="1619517745730" duration="16802000" />
     </task>
     <servers />
   </component>

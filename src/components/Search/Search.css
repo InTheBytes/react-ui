@@ -1,0 +1,41 @@
+body {
+    background-color: #F0F0F0;
+}
+
+.pageContent {
+    background-color: white;
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+#searchBox {
+    width: 500px;
+    color: #2699FB;
+}
+
+#searchBox-label {
+    color: #2699FB;
+    font-weight: bold;
+}
+
+.PrivateTabIndicator-colorSecondary-10 {
+    background-color: #2699FB!important;
+}
+
+.MuiTab-root.MuiTab-textColorInherit {
+    background-color: #F0F0F0;
+    color: #95989A;
+    font-weight: bold;
+    width: 250px;
+}
+
+.MuiTabs-flexContainer {
+    display: block!important;
+}
+
+.MuiTab-root.MuiTab-textColorInherit.Mui-selected {
+    background-color: #2699FB;
+    color: white;
+}

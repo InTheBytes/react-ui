@@ -7,7 +7,7 @@ import NavigationBar from "./components/Header/NavigationBar";
 import Sidebar from "./components/SideBar/SideBar";
 
 import Home from "./components/Home";
-import ViewSearch from "./components/ViewSearch";
+import Search from "./components/Search/Search";
 import Page404 from "./components/Error/Page404";
 
 function App(props) {
@@ -21,7 +21,7 @@ function App(props) {
                 <Sidebar drawer={sideDrawer} setDrawer={setSideDrawer} />
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/viewsearch" component={ViewSearch} />
+                    <Route exact path="/food" component={Search} />
                     <Route component={Page404} />
                 </Switch>
             </div>

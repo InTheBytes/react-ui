@@ -1,0 +1,11 @@
+#optionPanel {
+    float: left;
+}
+
+#sortPanel, #filterPanel {
+    display: block;
+}
+
+.MuiRadio-colorSecondary.Mui-checked {
+    color: #2699FB!important;
+}
