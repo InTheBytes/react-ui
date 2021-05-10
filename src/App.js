@@ -21,7 +21,7 @@ function App(props) {
                 <Sidebar drawer={sideDrawer} setDrawer={setSideDrawer} />
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/food" component={Search} />
+                    <Route exact path="/search" component={Search} />
                     <Route component={Page404} />
                 </Switch>
             </div>

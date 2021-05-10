@@ -3,8 +3,6 @@ import { SwipeableDrawer, Link} from '@material-ui/core';
 import {Link as RouterLink} from 'react-router-dom';
 import './SideBar.css';
 
-
-
 function SideBar(props) {
 
 	let toggleDrawer = (open) => {
@@ -19,6 +17,7 @@ function SideBar(props) {
 			open={props.drawer}
 			onClose={toggleDrawer(false)}
 			onOpen={toggleDrawer(true)}
+			role="sidebar"
 		>
 			<Link
 				component={RouterLink}
@@ -30,7 +29,7 @@ function SideBar(props) {
 			</Link>
 			<Link
 				component={RouterLink}
-				to="/About"
+				to="/about"
 				onClick={toggleDrawer(false)}
 				className="Nav__link"
 			>
@@ -38,7 +37,7 @@ function SideBar(props) {
 			</Link>
 			<Link
 				component={RouterLink}
-				to="/Page404"
+				to="/login"
 				onClick={toggleDrawer(false)}
 				className="Nav__link"
 			>
@@ -46,15 +45,15 @@ function SideBar(props) {
 			</Link>
 			<Link
 				component={RouterLink}
-				to="/Page404"
+				to="/search"
 				onClick={toggleDrawer(false)}
 				className="Nav__link"
 			>
-				More Menu Options
+				Search Our Menu
 			</Link>
 			<Link
 				component={RouterLink}
-				to="/Page404"
+				to="/contact"
 				onClick={toggleDrawer(false)}
 				className="Nav__link"
 			>

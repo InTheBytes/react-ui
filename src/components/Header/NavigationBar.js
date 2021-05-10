@@ -26,7 +26,7 @@ function NavigationBar(props) {
 					edge="start"
 					id="navLogin"
 					color="inherit"
-					aria-label="login"
+					aria-label="account"
 					aria-controls="menu-appbar"
 					aria-haspopup="true"
 					onClick={handleMenu}
@@ -51,11 +51,11 @@ function NavigationBar(props) {
 							onClose={handleClose}
 						>
 						{auth ? (
-							<MenuItem component={RouterLink} onClick={handleClose} to="/logout">Logout</MenuItem>
-						) : (<>
-							<MenuItem component={RouterLink} onClick={handleClose} to="/login">Login</MenuItem>
-							<MenuItem component={RouterLink} onClick={handleClose} to="/register">Sign Up</MenuItem>
-						</>)}
+							<MenuItem component={RouterLink} onClick={handleClose} to="/logout" key="logout">Logout</MenuItem>
+						) : ([
+							<MenuItem component={RouterLink} onClick={handleClose} to="/login"  key="login">Login</MenuItem>,
+							<MenuItem component={RouterLink} onClick={handleClose} to="/register" key="signup">Sign Up</MenuItem>
+						])}
 						</Menu>
 					</div>
 			</Toolbar>
