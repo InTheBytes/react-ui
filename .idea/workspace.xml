@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40b7054b-ec61-4375-86df-69279523c29a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Authentication/Login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Authentication/Login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Authentication/Register.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Authentication/Register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/NavigationBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/Filters.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Filters.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/Filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Filters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/Search.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Search.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/ViewResults.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/ViewResults.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/ViewResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/ViewResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SideBar/SideBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideBar/SideBar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
