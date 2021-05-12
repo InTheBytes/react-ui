@@ -1,0 +1,40 @@
+.pageContent {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 20px 20px 0 20px;
+    text-align: center;
+}
+
+#searchBox {
+    width: 499px;
+    color: #2699FB;
+    border: 1px solid #2699FB;
+    border-radius: 1px;
+    padding-bottom: 10px;
+}
+
+#searchBox-label {
+    color: #2699FB;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.MuiTabs-indicator {
+    background-color: #2699FB!important;
+}
+
+.MuiTab-root.MuiTab-textColorInherit {
+    background-color: #F0F0F0;
+    color: #95989A;
+    font-weight: bold;
+    width: 250px;
+}
+
+.MuiTabs-flexContainer {
+    display: block!important;
+}
+
+.MuiTab-root.MuiTab-textColorInherit.Mui-selected {
+    background-color: #2699FB;
+    color: white;
+}
