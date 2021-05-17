@@ -3,7 +3,12 @@ import {Container, Typography, TextField, Button, Box, Link, makeStyles} from '@
 
 import './Login.css';
 
-function Login(props) {
+function handleSubmit(evt) {
+	evt.preventDefault();
+	alert(evt.target.elements.username.value);
+}
+
+function Login({ onSubmit = handleSubmit, ...props }) {
 
 	const useStyles = makeStyles((theme) => ({
 		paper: {
@@ -33,16 +38,17 @@ function Login(props) {
 				<Typography component="h1" variant="h4">
 					Login to StackLunch
 				</Typography>
-				<form className={classes.form}>
+				<form className={classes.form} onSubmit={onSubmit}>
 					<TextField
 						variant="outlined"
 						margin="normal"
 						required
 						fullWidth
-						id="email"
-						label="User or Email"
-						name="email"
-						autoComplete="email"
+						id="username"
+						label="Username"
+						name="username"
+						autoComplete="username"
+						aria-label="username"
 						autoFocus
 					/>
 					<TextField
@@ -55,6 +61,7 @@ function Login(props) {
 						type="password"
 						id="password"
 						autoComplete="current-password"
+						aria-label="password"
 					/>
 					<Button
 						type="submit"
