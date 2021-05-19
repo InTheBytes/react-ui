@@ -3,7 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="40b7054b-ec61-4375-86df-69279523c29a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Authentication/Login.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Authentication/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Authentication/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Authentication/Register.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Authentication/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Authentication/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/NavigationBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SideBar/SideBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideBar/SideBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SideBar/SideBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideBar/SideBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +73,7 @@
       <recent name="C:\Users\mosaa\Desktop\Workbench\SmoothStack\Scrumptious\react-ui\src\components\Header" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.Login.empty validation">
+  <component name="RunManager" selected="npm.start">
     <configuration name="Login.empty validation" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -156,8 +166,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.Login.empty validation" />
         <item itemvalue="npm.start" />
+        <item itemvalue="Jest.Login.empty validation" />
         <item itemvalue="Jest.Result tab.result tab alternates" />
         <item itemvalue="Jest.Search.test.js" />
         <item itemvalue="Jest.Search Route (1)" />
@@ -198,7 +208,9 @@
       <workItem from="1620614691761" duration="705000" />
       <workItem from="1620883709758" duration="7000" />
       <workItem from="1621007617603" duration="2669000" />
-      <workItem from="1621239144119" duration="2881000" />
+      <workItem from="1621239144119" duration="8633000" />
+      <workItem from="1621367952397" duration="7511000" />
+      <workItem from="1621402247302" duration="4887000" />
     </task>
     <servers />
   </component>

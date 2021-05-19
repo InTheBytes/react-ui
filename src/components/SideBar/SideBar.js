@@ -18,6 +18,7 @@ function SideBar(props) {
 			onClose={toggleDrawer(false)}
 			onOpen={toggleDrawer(true)}
 			role="sidebar"
+			className="sideBar"
 		>
 			<Link
 				component={RouterLink}

@@ -39,3 +39,6 @@
 .Nav__link {
     text-transform: uppercase;
 }
+.sideBar .MuiTypography-colorPrimary {
+    color: white;
+}

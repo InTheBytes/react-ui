@@ -7,4 +7,6 @@ export {default as Page404} from './Error/Page404';
 export {default as Search} from './Search/Search';
 
 export {default as Login} from './Authentication/Login';
+export {default as Logout} from './Authentication/Logout';
 export {default as Register} from './Authentication/Register';
+export {default as ConfirmEmail} from './Authentication/ConfirmEmail';

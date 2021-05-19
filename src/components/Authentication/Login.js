@@ -1,14 +1,29 @@
 import React from 'react';
 import {Container, Typography, TextField, Button, Box, Link, makeStyles} from '@material-ui/core';
+import Axios from "axios";
+import {useHistory} from "react-router-dom";
 
-import './Login.css';
+function Login(props) {
 
-function handleSubmit(evt) {
-	evt.preventDefault();
-	alert(evt.target.elements.username.value);
-}
+	const history = useHistory();
 
-function Login({ onSubmit = handleSubmit, ...props }) {
+	function handleSubmit(evt) {
+		evt.preventDefault();
+
+		Axios.post("http://localhost:8080/login", {
+			username: evt.target.elements.username.value,
+			password: evt.target.elements.password.value
+		}).then((response) => {
+			if (response.headers['authentication'].length > 0) {
+				props.setAuth(response.headers['authentication']);
+				history.push("/");
+			} else {
+				console.error("Authentication error.");
+			}
+		}, err => {
+			console.error("Authentication error.");
+		});
+	}
 
 	const useStyles = makeStyles((theme) => ({
 		paper: {
@@ -24,13 +39,11 @@ function Login({ onSubmit = handleSubmit, ...props }) {
 			justifyContent: 'center'
 		},
 		submit: {
-			margin: theme.spacing(3, 0, 2),
-			width: '50%'
+			margin: theme.spacing(3, 0, 3),
 		},
 	}));
 
 	const classes = useStyles();
-
 
 	return (
 		<Container component="main" maxWidth="xs">
@@ -38,7 +51,7 @@ function Login({ onSubmit = handleSubmit, ...props }) {
 				<Typography component="h1" variant="h4">
 					Login to StackLunch
 				</Typography>
-				<form className={classes.form} onSubmit={onSubmit}>
+				<form className={classes.form} onSubmit={handleSubmit}>
 					<TextField
 						variant="outlined"
 						margin="normal"
@@ -68,6 +81,7 @@ function Login({ onSubmit = handleSubmit, ...props }) {
 						variant="contained"
 						color="primary"
 						size="large"
+						fullWidth
 						className={classes.submit}
 					>
 						Login
@@ -75,9 +89,7 @@ function Login({ onSubmit = handleSubmit, ...props }) {
 				</form>
 			</div>
 			<Box position="bottom">
-				<Link href="#" variant="body2">
-					{"Don't have an account? Sign Up"}
-				</Link>
+				Don't have an account? <Link href="/register">Sign Up</Link>
 			</Box>
 		</Container>
 	);

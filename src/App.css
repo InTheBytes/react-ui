@@ -2,10 +2,6 @@
 	text-align: left;
 }
 
-.MuiPaper-root {
+.MuiPaper-root, .MuiButton-containedPrimary {
 	background: #2699FB!important;
-}
-
-.MuiTypography-colorPrimary {
-	color: white!important;
 }
