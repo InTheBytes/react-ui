@@ -44,7 +44,7 @@ function Search(props) {
 		}
 
 		const fetchFood = async () => {
-			let url = "http://localhost:8080/search/";
+			let url = "http://localhost:8082/search/";
 			url += (tab === 0) ? "food" : "restaurant";
 			url += "?query=" + input;
 			url += (sort.length > 0) ? "&sort="+ sort : "";

@@ -4,7 +4,6 @@ import {AppBar, IconButton, Toolbar, Menu, MenuItem, Icon} from "@material-ui/co
 import {Link as RouterLink} from 'react-router-dom';
 
 function NavigationBar(props) {
-	const [auth, setAuth] = React.useState(false);
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 
@@ -50,7 +49,7 @@ function NavigationBar(props) {
 							open={open}
 							onClose={handleClose}
 						>
-						{auth ? (
+						{props.auth.length > 0 ? (
 							<MenuItem component={RouterLink} onClick={handleClose} to="/logout" key="logout">Logout</MenuItem>
 						) : ([
 							<MenuItem component={RouterLink} onClick={handleClose} to="/login"  key="login">Login</MenuItem>,

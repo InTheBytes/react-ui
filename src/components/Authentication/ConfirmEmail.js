@@ -1,7 +1,7 @@
-import React from 'react';
 import {Container, makeStyles, Typography} from "@material-ui/core";
+import React from "react";
 
-function Home() {
+function ConfirmEmail() {
 
 	const useStyles = makeStyles((theme) => ({
 		paper: {
@@ -18,12 +18,12 @@ function Home() {
 	return (
 		<Container component="main">
 			<div className={classes.paper}>
-				<Typography component="h1" variant="h2">
-					Welcome to StackLunch
+				<Typography component="h1" variant="h4">
+					Success! Please check your email for a link to confirm your account.
 				</Typography>
 			</div>
 		</Container>
 	);
 }
 
-export default Home;
+export default ConfirmEmail;
