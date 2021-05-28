@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Box, Button, Container, Link, makeStyles, TextField, Typography, Grid, CircularProgress, Backdrop} from '@material-ui/core';
 import {useHistory} from "react-router-dom";
+import InputMask from 'react-input-mask';
 import Axios from "axios";
 import {Alert} from "@material-ui/lab";
 
@@ -20,6 +21,9 @@ function Register(props) {
 		} else if (evt.target.elements.fullname.value.indexOf(" ") === -1) {
 			setMessage("Please provide your full name");
 			return;
+		} else if (isNaN(evt.target.elements.phone.value.replace(/[^\d]/g, '')) || evt.target.elements.phone.value.replace(/[^\d]/g, '').length !== 10) {
+			setMessage("Please provide a valid phone number");
+			return;
 		} else if (isNaN(evt.target.elements.zipCode.value) || evt.target.elements.zipCode.value.length !== 5) {
 			setMessage("Please provide a valid Zip Code");
 			return;
@@ -31,7 +35,7 @@ function Register(props) {
 			username: evt.target.elements.username.value,
 			password: evt.target.elements.password.value,
 			email: evt.target.elements.email.value,
-			phone: evt.target.elements.phone.value,
+			phone: evt.target.elements.phone.value.replace(/[^\d]/g, ''),
 			firstName: evt.target.elements.fullname.value.split(" ")[0],
 			lastName: evt.target.elements.fullname.value.split(" ")[1],
 			role: {
@@ -49,7 +53,12 @@ function Register(props) {
 			}
 		}, err => {
 			setLoading(false);
-			setMessage("Registration error.");
+
+			if (err.response.status === 409) {
+				setMessage("Username already exists");
+			} else {
+				setMessage("Registration error.");
+			}
 		});
 	}
 
@@ -156,17 +165,22 @@ function Register(props) {
 								aria-label="full name"
 								autoFocus
 							/>
-							<TextField
-								variant="outlined"
-								margin="normal"
-								required
-								fullWidth
-								name="phone"
-								label="Phone"
-								id="phone"
-								autoComplete="tel"
-								aria-label="phone"
-							/>
+							<InputMask
+								mask="(999) 999-9999"
+								maskChar=" "
+								>
+								{() => <TextField
+									variant="outlined"
+									margin="normal"
+									required
+									fullWidth
+									name="phone"
+									label="Phone"
+									id="phone"
+									autoComplete="tel"
+									aria-label="phone"
+								/>}
+							</InputMask>
 							<TextField
 								variant="outlined"
 								margin="normal"
