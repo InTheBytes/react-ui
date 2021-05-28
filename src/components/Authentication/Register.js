@@ -20,6 +20,9 @@ function Register(props) {
 		} else if (evt.target.elements.fullname.value.indexOf(" ") === -1) {
 			setMessage("Please provide your full name");
 			return;
+		} else if (isNaN(evt.target.elements.zipCode.value) || evt.target.elements.zipCode.value.length !== 5) {
+			setMessage("Please provide a valid Zip Code");
+			return;
 		}
 
 		setLoading(true);
