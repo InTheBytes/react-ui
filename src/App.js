@@ -10,7 +10,9 @@ import {
     Logout,
     Register,
     ConfirmEmail,
-    Search
+    Search,
+    ViewFood,
+    ViewRestaurant
 } from './components';
 
 import './App.css';
@@ -37,6 +39,8 @@ function App(props) {
                     )} />
                     <Route exact path="/success" component={ConfirmEmail} />
                     <Route exact path="/search" component={Search} />
+                    <Route path="/foods/:id" component={ViewFood} />
+                    <Route path="/restaurants/:id" component={ViewRestaurant} />
                     <Route component={Page404} />
                 </Switch>
             </div>

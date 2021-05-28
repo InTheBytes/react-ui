@@ -10,3 +10,6 @@ export {default as Login} from './Authentication/Login';
 export {default as Logout} from './Authentication/Logout';
 export {default as Register} from './Authentication/Register';
 export {default as ConfirmEmail} from './Authentication/ConfirmEmail';
+
+export {default as ViewFood} from './View/ViewFood';
+export {default as ViewRestaurant} from './View/ViewRestaurant';

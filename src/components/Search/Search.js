@@ -39,9 +39,6 @@ function Search(props) {
 	}
 
 	useEffect(() => {
-		if (!input) {
-			return;
-		}
 
 		const fetchFood = async () => {
 			let url = "http://localhost:8082/search/";

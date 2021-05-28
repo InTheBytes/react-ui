@@ -5,14 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Authentication/Login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Authentication/Authentication.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Authentication/Authentication.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Authentication/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Authentication/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Authentication/Register.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Authentication/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Authentication/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/NavigationBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SideBar/SideBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideBar/SideBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SideBar/SideBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideBar/SideBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +43,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/View" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -65,6 +61,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mosaa\Desktop\Workbench\SmoothStack\Scrumptious\user-ui\src\components\View" />
       <recent name="C:\Users\mosaa\Desktop\Workbench\SmoothStack\Scrumptious\react-ui\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -210,7 +207,13 @@
       <workItem from="1621007617603" duration="2669000" />
       <workItem from="1621239144119" duration="8633000" />
       <workItem from="1621367952397" duration="7511000" />
-      <workItem from="1621402247302" duration="4887000" />
+      <workItem from="1621402247302" duration="5496000" />
+      <workItem from="1621436321568" duration="8843000" />
+      <workItem from="1621466784646" duration="1276000" />
+      <workItem from="1621535824355" duration="269000" />
+      <workItem from="1621610694000" duration="1851000" />
+      <workItem from="1622177336070" duration="1481000" />
+      <workItem from="1622217152829" duration="1956000" />
     </task>
     <servers />
   </component>

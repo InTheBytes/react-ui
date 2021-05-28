@@ -1,38 +1,53 @@
-import React from 'react';
-import {Box, Button, Container, Link, makeStyles, TextField, Typography, Grid} from '@material-ui/core';
+import React, {useState} from 'react';
+import {Box, Button, Container, Link, makeStyles, TextField, Typography, Grid, CircularProgress, Backdrop} from '@material-ui/core';
 import {useHistory} from "react-router-dom";
 import Axios from "axios";
+import {Alert} from "@material-ui/lab";
 
 function Register(props) {
+
+	const [message, setMessage] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	const history = useHistory();
 
 	function handleSubmit(evt) {
 		evt.preventDefault();
 
-		if (evt.target.elements.password.value === evt.target.elements.passwordConfirm.value && evt.target.elements.fullname.value.indexOf(" ") > 0) {
-			Axios.post("http://localhost:8080/user/register", {
-				username: evt.target.elements.username.value,
-				password: evt.target.elements.password.value,
-				email: evt.target.elements.email.value,
-				phone: evt.target.elements.phone.value,
-				firstName: evt.target.elements.fullname.value.split(" ")[0],
-				lastName: evt.target.elements.fullname.value.split(" ")[1],
-				role: {
-					roleId: 4,
-					roleName: "customer"
-				},
-				"active": 1
-			}).then((response) => {
-				if (response.status === 201) {
-					history.push("/success");
-				} else {
-					console.error("Registration error.");
-				}
-			}, err => {
-				console.error("Registration error.");
-			});
+		if (evt.target.elements.password.value !== evt.target.elements.passwordConfirm.value) {
+			setMessage("Password must match");
+			return;
+		} else if (evt.target.elements.fullname.value.indexOf(" ") === -1) {
+			setMessage("Please provide your full name");
+			return;
 		}
+
+		setLoading(true);
+
+		Axios.post("http://localhost:8080/user/register", {
+			username: evt.target.elements.username.value,
+			password: evt.target.elements.password.value,
+			email: evt.target.elements.email.value,
+			phone: evt.target.elements.phone.value,
+			firstName: evt.target.elements.fullname.value.split(" ")[0],
+			lastName: evt.target.elements.fullname.value.split(" ")[1],
+			role: {
+				roleId: 4,
+				roleName: "customer"
+			},
+			"active": 1
+		}).then((response) => {
+			setLoading(false);
+
+			if (response.status === 201) {
+				history.push("/success");
+			} else {
+				setMessage("Registration error.");
+			}
+		}, err => {
+			setLoading(false);
+			setMessage("Registration error.");
+		});
 	}
 
 	const useStyles = makeStyles((theme) => ({
@@ -55,6 +70,10 @@ function Register(props) {
 			alignContent: 'center',
 			margin: theme.spacing(3, 0, 3),
 		},
+		backdrop: {
+			zIndex: theme.zIndex.drawer + 1,
+			color: '#fff',
+		},
 	}));
 
 	const classes = useStyles();
@@ -68,6 +87,9 @@ function Register(props) {
 							<Typography component="h1" variant="h4" className={classes.header}>
 								Create a new account
 							</Typography>
+							{message.length > 0 && (
+								<Alert severity="error">{message}</Alert>
+							)}
 						</Grid>
 						<Grid item xs={12} md={6}>
 							<TextField
@@ -211,6 +233,9 @@ function Register(props) {
 					</Grid>
 				</form>
 			</div>
+			<Backdrop className={classes.backdrop} open={loading}>
+				<CircularProgress size={24} />
+			</Backdrop>
 			<Box position="bottom">
 				Already have an account? <Link href="/login">Login</Link>
 			</Box>
