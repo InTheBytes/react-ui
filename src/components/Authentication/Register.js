@@ -11,7 +11,7 @@ function Register(props) {
 		evt.preventDefault();
 
 		if (evt.target.elements.password.value === evt.target.elements.passwordConfirm.value && evt.target.elements.fullname.value.indexOf(" ") > 0) {
-			Axios.post("http://localhost:8080/user/register", {
+			Axios.post("http://api.stacklunch.com/user/register", {
 				username: evt.target.elements.username.value,
 				password: evt.target.elements.password.value,
 				email: evt.target.elements.email.value,

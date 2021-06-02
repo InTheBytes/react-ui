@@ -44,7 +44,7 @@ function Search(props) {
 		}
 
 		const fetchFood = async () => {
-			let url = "http://localhost:8082/search/";
+			let url = "http://api.stacklunch.com/search/";
 			url += (tab === 0) ? "food" : "restaurant";
 			url += "?query=" + input;
 			url += (sort.length > 0) ? "&sort="+ sort : "";
