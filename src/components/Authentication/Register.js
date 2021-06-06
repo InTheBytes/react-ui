@@ -9,24 +9,58 @@ function Register(props) {
 
 	const [message, setMessage] = useState("");
 	const [loading, setLoading] = useState(false);
+	const [validation, setValidation] = useState({});
 
 	const history = useHistory();
 
 	function handleSubmit(evt) {
 		evt.preventDefault();
 
+		let newValidation = {}
+
+		// Passwords match
 		if (evt.target.elements.password.value !== evt.target.elements.passwordConfirm.value) {
-			setMessage("Password must match");
+			newValidation["passwordConfirm"] = "Password must match";
+		}
+
+		// Password strength validation
+		let passwordValidator = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,32}$");
+		if (!passwordValidator.test(evt.target.elements.password.value)) {
+			newValidation["password"] = "Password must contain at least 8 characters, including upper/lowercase and numbers";
+		}
+
+		// Email validation
+		let emailValidator = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+		if (!emailValidator.test(evt.target.elements.email.value)) {
+			newValidation["email"] = "Please provide a valid email";
+		}
+
+		// Full name contains 2 names
+		if (evt.target.elements.fullname.value.indexOf(" ") === -1) {
+			newValidation["fullname"] = "Please provide your full name";
+		}
+
+		// phone number valid
+		if (isNaN(evt.target.elements.phone.value.replace(/[^\d]/g, '')) || evt.target.elements.phone.value.replace(/[^\d]/g, '').length !== 10) {
+			newValidation["phone"] = "Please provide a valid phone number";
+		}
+
+		// zip code is a number
+		if (isNaN(evt.target.elements.zipCode.value) || evt.target.elements.zipCode.value.replace(/[^\d]/g, '').length !== 5) {
+			newValidation["zipcode"] = "Please provide a valid Zip Code";
+		}
+
+
+		setMessage("");
+
+		// one or more validation error present
+		if (Object.keys(newValidation).length > 0) {
+			setValidation(newValidation);
+			setMessage("Please fix the highlighted fields");
 			return;
-		} else if (evt.target.elements.fullname.value.indexOf(" ") === -1) {
-			setMessage("Please provide your full name");
-			return;
-		} else if (isNaN(evt.target.elements.phone.value.replace(/[^\d]/g, '')) || evt.target.elements.phone.value.replace(/[^\d]/g, '').length !== 10) {
-			setMessage("Please provide a valid phone number");
-			return;
-		} else if (isNaN(evt.target.elements.zipCode.value) || evt.target.elements.zipCode.value.length !== 5) {
-			setMessage("Please provide a valid Zip Code");
-			return;
+		} else {
+			setValidation({});
+			setMessage("");
 		}
 
 		setLoading(true);
@@ -46,7 +80,7 @@ function Register(props) {
 		}).then((response) => {
 			setLoading(false);
 
-			if (response.status === 201) {
+			if (response?.status === 201) {
 				history.push("/success");
 			} else {
 				setMessage("Registration error.");
@@ -54,7 +88,7 @@ function Register(props) {
 		}, err => {
 			setLoading(false);
 
-			if (err.response.status === 409) {
+			if (err?.response?.status === 409) {
 				setMessage("Username already exists");
 			} else {
 				setMessage("Registration error.");
@@ -121,6 +155,8 @@ function Register(props) {
 								margin="normal"
 								required
 								fullWidth
+								error={'email' in validation}
+								helperText={validation['email']}
 								name="email"
 								label="Email"
 								id="email"
@@ -132,6 +168,8 @@ function Register(props) {
 								margin="normal"
 								required
 								fullWidth
+								error={'password' in validation}
+								helperText={validation['password']}
 								name="password"
 								label="Password"
 								type="password"
@@ -144,6 +182,8 @@ function Register(props) {
 								margin="normal"
 								required
 								fullWidth
+								error={'passwordConfirm' in validation}
+								helperText={validation['passwordConfirm']}
 								name="passwordConfirm"
 								label="Confirm Password"
 								type="password"
@@ -158,6 +198,8 @@ function Register(props) {
 								margin="normal"
 								required
 								fullWidth
+								error={'fullname' in validation}
+								helperText={validation['fullname']}
 								id="fullname"
 								label="Full Name"
 								name="fullname"
@@ -174,6 +216,8 @@ function Register(props) {
 									margin="normal"
 									required
 									fullWidth
+									error={'phone' in validation}
+									helperText={validation['phone']}
 									name="phone"
 									label="Phone"
 									id="phone"
@@ -220,17 +264,24 @@ function Register(props) {
 									/>
 								</Grid>
 								<Grid item xs={12} md={3}>
-									<TextField
-										variant="outlined"
-										margin="normal"
-										required
-										fullWidth
-										name="zipCode"
-										label="Zip Code"
-										id="zipCode"
-										autoComplete="postal-code"
-										aria-label="zip code"
-									/>
+									<InputMask
+										mask="99999"
+										maskChar=" "
+									>
+										{() => <TextField
+											variant="outlined"
+											margin="normal"
+											required
+											fullWidth
+											error={'zipcode' in validation}
+											helperText={validation['zipcode']}
+											name="zipCode"
+											label="Zip Code"
+											id="zipCode"
+											autoComplete="postal-code"
+											aria-label="zip code"
+										/>}
+									</InputMask>
 								</Grid>
 							</Grid>
 						</Grid>
