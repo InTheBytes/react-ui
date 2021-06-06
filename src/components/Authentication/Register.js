@@ -31,7 +31,7 @@ function Register(props) {
 
 		setLoading(true);
 
-		Axios.post("http://localhost:8080/user/register", {
+		Axios.post(`${process.env.REACT_APP_SL_API_URL}/user/register`, {
 			username: evt.target.elements.username.value,
 			password: evt.target.elements.password.value,
 			email: evt.target.elements.email.value,

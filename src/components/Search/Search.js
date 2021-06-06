@@ -41,7 +41,7 @@ function Search(props) {
 	useEffect(() => {
 
 		const fetchFood = async () => {
-			let url = "http://localhost:8082/search/";
+			let url = `${process.env.REACT_APP_SL_API_URL}/search/`;
 			url += (tab === 0) ? "food" : "restaurant";
 			url += "?query=" + input;
 			url += (sort.length > 0) ? "&sort="+ sort : "";

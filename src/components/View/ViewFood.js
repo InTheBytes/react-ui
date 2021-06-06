@@ -10,7 +10,7 @@ function ViewFood(props) {
 	const [results, setResults] = useState({});
 
 	function getFood(id) {
-		let url = "http://localhost:8082/foods";
+		let url = `${process.env.REACT_APP_SL_API_URL}/foods`;
 		url += "?foodId=" + id;
 
 		Axios.get(url)

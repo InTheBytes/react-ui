@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="40b7054b-ec61-4375-86df-69279523c29a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Authentication/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Authentication/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Authentication/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Authentication/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/View/ViewFood.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/View/ViewFood.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/View/ViewRestaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/View/ViewRestaurant.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +146,9 @@
         <script value="start" />
       </scripts>
       <node-interpreter value="project" />
-      <envs />
+      <envs>
+        <env name="REACT_APP_SL_API_URL" value="http://localhost:8080" />
+      </envs>
       <method v="2" />
     </configuration>
     <configuration name="test" type="js.build_tools.npm" nameIsGenerated="true">
@@ -157,6 +161,15 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Jest.Login.empty validation" />
+      <item itemvalue="Jest.Result tab.result tab alternates" />
+      <item itemvalue="Jest.Search.test.js" />
+      <item itemvalue="Jest.Search Route (1)" />
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.test" />
+      <item itemvalue="npm.start" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
@@ -210,6 +223,8 @@
       <workItem from="1621610694000" duration="1851000" />
       <workItem from="1622177336070" duration="1481000" />
       <workItem from="1622217152829" duration="1956000" />
+      <workItem from="1622752091731" duration="609000" />
+      <workItem from="1622790575681" duration="2359000" />
     </task>
     <servers />
   </component>
