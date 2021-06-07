@@ -2,6 +2,6 @@
 	text-align: left;
 }
 
-.MuiPaper-root, .MuiButton-containedPrimary {
-	background: #2699FB!important;
+.App .MuiAppBar-colorPrimary, .App .MuiButton-containedPrimary, .sideBar .MuiPaper-root {
+	background-color: #2699FB;
 }

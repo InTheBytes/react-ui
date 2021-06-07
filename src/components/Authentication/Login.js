@@ -1,29 +1,39 @@
-import React from 'react';
-import {Container, Typography, TextField, Button, Box, Link, makeStyles} from '@material-ui/core';
+import React, {useState} from 'react';
+import {Container, Typography, TextField, Button, Box, Link, makeStyles, CircularProgress, Backdrop} from '@material-ui/core';
+import {Alert} from '@material-ui/lab';
 import Axios from "axios";
 import {useHistory} from "react-router-dom";
 
 function Login(props) {
 
+	const [message, setMessage] = useState("");
+	const [loading, setLoading] = useState(false);
+
 	const history = useHistory();
 
-	function handleSubmit(evt) {
+	let handleSubmit = props.onSubmit ?? ((evt) => {
 		evt.preventDefault();
 
-		Axios.post("http://api.stacklunch.com/login", {
+		setLoading(true);
+
+		Axios.post(`${process.env.REACT_APP_SL_API_URL}/login`, {
 			username: evt.target.elements.username.value,
 			password: evt.target.elements.password.value
 		}).then((response) => {
+			setLoading(false);
+
 			if (response.headers['authentication'].length > 0) {
 				props.setAuth(response.headers['authentication']);
-				history.push("/");
+				history.push("/search");
 			} else {
-				console.error("Authentication error.");
+				setMessage("Authentication error.");
 			}
 		}, err => {
-			console.error("Authentication error.");
+			setLoading(false);
+
+			setMessage("Authentication error.");
 		});
-	}
+	});
 
 	const useStyles = makeStyles((theme) => ({
 		paper: {
@@ -41,6 +51,10 @@ function Login(props) {
 		submit: {
 			margin: theme.spacing(3, 0, 3),
 		},
+		backdrop: {
+			zIndex: theme.zIndex.drawer + 1,
+			color: '#fff',
+		},
 	}));
 
 	const classes = useStyles();
@@ -51,6 +65,9 @@ function Login(props) {
 				<Typography component="h1" variant="h4">
 					Login to StackLunch
 				</Typography>
+				{message.length > 0 && (
+					<Alert severity="error">{message}</Alert>
+				)}
 				<form className={classes.form} onSubmit={handleSubmit}>
 					<TextField
 						variant="outlined"
@@ -88,6 +105,9 @@ function Login(props) {
 					</Button>
 				</form>
 			</div>
+			<Backdrop className={classes.backdrop} open={loading}>
+				<CircularProgress size={24} />
+			</Backdrop>
 			<Box position="bottom">
 				Don't have an account? <Link href="/register">Sign Up</Link>
 			</Box>
