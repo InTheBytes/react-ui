@@ -24,7 +24,7 @@ function Register(props) {
 		}
 
 		// Password strength validation
-		let passwordValidator = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,32}$");
+		let passwordValidator = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,32}$/);
 		if (!passwordValidator.test(evt.target.elements.password.value)) {
 			newValidation["password"] = "Password must contain at least 8 characters, including upper/lowercase and numbers";
 		}
