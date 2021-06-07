@@ -26,16 +26,16 @@ describe('Register', () => {
 		const onSubmit = jest.fn(e => e.preventDefault());
 		render(<Register onSubmit={onSubmit} />);
 
-		const user = screen.getByLabelText( "Username")
-			, email = screen.getByLabelText( "Email")
-			, pass = screen.getByLabelText( "Password")
-			, conPass = screen.getByLabelText( "Confirm Password")
-			, fullName = screen.getByLabelText( "Full Name")
-			, phone = screen.getByLabelText( "Phone")
-			, address = screen.getByLabelText( "Address")
-			, city = screen.getByLabelText( "City")
-			, state = screen.getByLabelText( "State")
-			, zip = screen.getByLabelText( "Zip Code")
+		const user = screen.getByLabelText( "Username *")
+			, email = screen.getByLabelText( "Email *")
+			, pass = screen.getByLabelText( "Password *")
+			, conPass = screen.getByLabelText( "Confirm Password *")
+			, fullName = screen.getByLabelText( "Full Name *")
+			, phone = screen.getByLabelText( "Phone *")
+			, address = screen.getByLabelText( "Address *")
+			, city = screen.getByLabelText( "City *")
+			, state = screen.getByLabelText( "State *")
+			, zip = screen.getByLabelText( "Zip Code *")
 			, btn = screen.getByText( "Register");
 
 		expect(user).toBeTruthy();

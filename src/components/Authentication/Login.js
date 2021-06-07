@@ -11,7 +11,7 @@ function Login(props) {
 
 	const history = useHistory();
 
-	let handleSubmit = props.submitHandler ?? ((evt) => {
+	let handleSubmit = props.onSubmit ?? ((evt) => {
 		evt.preventDefault();
 
 		setLoading(true);

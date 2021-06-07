@@ -13,7 +13,7 @@ function Register(props) {
 
 	const history = useHistory();
 
-	function handleSubmit(evt) {
+	let handleSubmit = props.onSubmit ?? ((evt) => {
 		evt.preventDefault();
 
 		let newValidation = {}
@@ -94,7 +94,7 @@ function Register(props) {
 				setMessage("Registration error.");
 			}
 		});
-	}
+	});
 
 	const useStyles = makeStyles((theme) => ({
 		paper: {
