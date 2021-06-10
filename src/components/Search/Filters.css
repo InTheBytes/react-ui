@@ -1,0 +1,27 @@
+#optionPanel {
+    padding: 0 20px;
+}
+
+#sortPanel, #filterPanel {
+    display: block;
+}
+
+#filterPanel label {
+    display: block;
+}
+
+.MuiFormLabel-root.groupLabel {
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.MuiFormLabel-root.Mui-focused {
+    color: rgba(0, 0, 0, 0.54)!important;
+}
+
+.Mui-checked {
+    color: #2699FB!important;
+}
+.material-icons .MuiTypography-body1{
+    font-family: 'Material Icons', sans-serif;
+}

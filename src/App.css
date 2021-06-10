@@ -1,0 +1,7 @@
+.App {
+	text-align: left;
+}
+
+.App .MuiAppBar-colorPrimary, .App .MuiButton-containedPrimary, .sideBar .MuiPaper-root {
+	background-color: #2699FB;
+}
