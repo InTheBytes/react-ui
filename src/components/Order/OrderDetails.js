@@ -5,7 +5,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Location from "./Location.js";
-import {formatStatus, formatWindow, formatDate} from "./OrderPipes.js"
+import { formatStatus, formatWindow, formatDate } from "./OrderPipes.js";
 
 function OrderDetails(props) {
   let order = props.order;
@@ -37,8 +37,8 @@ function OrderDetails(props) {
           <Grid item xs={12}>
             <List>
               {order.items.map((item) => (
-                <Grid container spacing={1}>
-                  <ListItem key={item.id}>
+                <ListItem key={item.food}>
+                  <Grid container spacing={1}>
                     <Grid item xs={2}>
                       x{item.quantity}
                     </Grid>
@@ -48,8 +48,8 @@ function OrderDetails(props) {
                     <Grid item xs={4}>
                       ${item.quantity * item.price}
                     </Grid>
-                  </ListItem>
-                </Grid>
+                  </Grid>
+                </ListItem>
               ))}
             </List>
           </Grid>

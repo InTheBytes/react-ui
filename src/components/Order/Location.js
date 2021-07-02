@@ -12,8 +12,8 @@ function Location(props) {
     return (
       <>
         <p>
-          {address.unit} {address.street} {oneLine()}
-          {address.city}, {address.state} {address.zipCode}
+          {address.unit +" "+ address.street}{oneLine()}
+          {address.city + ", " + address.state + " " + address.zipCode}
         </p>
       </>
     );
