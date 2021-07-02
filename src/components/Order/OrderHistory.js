@@ -14,7 +14,6 @@ function OrderHistory(props) {
   const [selectedOrder, setSelectedOrder] = useState(null);
 
   function fetchPage() {
-    console.log("Fetching page...");
     axios
       .get(`${process.env.REACT_APP_SL_API_URL}/order`, {
         headers: { Authentication: props.auth },
@@ -24,23 +23,15 @@ function OrderHistory(props) {
         },
       })
       .then((resp) => {
-        console.log(resp);
         setResult(resp.data);
-        console.log("After set");
-        console.log(result);
       });
   }
-
-  useEffect(() => {
-    console.log("re-rendering...");
-  });
 
   useEffect(() => {
     fetchPage();
   }, []);
 
   useEffect(() => {
-    console.log("Re-rendering page...");
     fetchPage();
   }, [page]);
 

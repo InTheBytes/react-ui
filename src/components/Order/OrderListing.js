@@ -1,6 +1,7 @@
 import React from "react";
 import {Grid} from "@material-ui/core";
 import Location from "./Location.js";
+import {formatDate} from "./OrderPipes.js";
 
 function OrderListing(props) {
   const order = props.order;
@@ -14,17 +15,17 @@ function OrderListing(props) {
   };
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={1}>
+      <Grid item xs={2}>
+        <em>{formatDate(order.windowStart, true)}</em>
+      </Grid>
       <Grid item xs={4}>
-        <h4>{order.restaurant.name}</h4>
-        <em>
-          <Location address={order.restaurant.location} oneLine={true} />
-        </em>
+        <strong>{order.restaurant.name}</strong>
       </Grid>
       <Grid item xs={4}>
         <Location address={order.destination} />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={2}>
         <strong>${calculateTotal()}.00</strong>
       </Grid>
     </Grid>
