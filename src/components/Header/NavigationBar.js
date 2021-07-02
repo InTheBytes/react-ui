@@ -49,9 +49,10 @@ function NavigationBar(props) {
 							open={open}
 							onClose={handleClose}
 						>
-						{props.auth.length > 0 ? (
+						{props.auth.length > 0 ? ([
+							<MenuItem component={RouterLink} onClick={handleClose} to="/orders" key="orders">Order History</MenuItem>,
 							<MenuItem component={RouterLink} onClick={handleClose} to="/logout" key="logout">Logout</MenuItem>
-						) : ([
+						]) : ([
 							<MenuItem component={RouterLink} onClick={handleClose} to="/login"  key="login">Login</MenuItem>,
 							<MenuItem component={RouterLink} onClick={handleClose} to="/register" key="signup">Sign Up</MenuItem>
 						])}

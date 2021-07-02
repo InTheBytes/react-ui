@@ -12,11 +12,11 @@ import {
     ConfirmEmail,
     Search,
     ViewFood,
-    ViewRestaurant
+    ViewRestaurant,
+    OrderHistory
 } from './components';
 
 import './App.css';
-
 
 function App(props) {
 
@@ -41,6 +41,9 @@ function App(props) {
                     <Route exact path="/search" component={Search} />
                     <Route path="/foods/:id" component={ViewFood} />
                     <Route path="/restaurants/:id" component={ViewRestaurant} />
+                    <Route path="/orders" render={() => (
+                        <OrderHistory auth={auth} />
+                    )} />
                     <Route component={Page404} />
                 </Switch>
             </div>
