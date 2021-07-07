@@ -13,7 +13,8 @@ import {
     Search,
     ViewFood,
     ViewRestaurant,
-    OrderHistory
+    OrderHistory,
+    Profile
 } from './components';
 
 import './App.css';
@@ -43,6 +44,9 @@ function App(props) {
                     <Route path="/restaurants/:id" component={ViewRestaurant} />
                     <Route path="/orders" render={() => (
                         <OrderHistory auth={auth} />
+                    )} />
+                    <Route path="/profile" render={() => (
+                        <Profile auth={auth} />
                     )} />
                     <Route component={Page404} />
                 </Switch>
