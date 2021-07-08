@@ -33,11 +33,6 @@ function Profile(props) {
 
   return (
     <Grid container spacing={2} id="profileGrid" alignItems="center">
-      <Grid item xs={12}>
-        <Typography variant="h1" component="h3" align="left">
-          Your Profile
-        </Typography>
-      </Grid>
       <Grid item xs={12} sm={4} id="editOptionsContianer">
         <ProfileOptionsNav buttons={editButtons} />
       </Grid>
@@ -58,8 +53,12 @@ function ProfileDetails(props) {
     const nums = phone.split("").filter((x) => !(isNaN(x)))
     if (nums.length >= 11) {
       nums = nums.slice(-10);
+    } 
+    if (nums.length < 10 && nums.length >= 7) {
+      return `${nums.slice(0, 3).join('')}-${nums.slice(3, 7).join('')}`
+    } else {
+      return `(${nums.slice(0, 3).join('')}) ${nums.slice(3, 6).join('')}-${nums.slice(6, 10).join('')}`
     }
-    return `(${nums.slice(0, 3)}) ${nums.slice(3, 6)}-${nums.slice(6, 10)}`
   }
 
   return (
