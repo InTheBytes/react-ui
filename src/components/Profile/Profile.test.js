@@ -1,5 +1,6 @@
 import { act, render, screen, waitFor } from "@testing-library/react";
-import {Profile, ProfileDetails } from "./Profile";
+import Profile from "./Profile";
+import ProfileDetails from "./ProfileDetails";
 import axios from 'axios';
 
 const profile = (active) => {
