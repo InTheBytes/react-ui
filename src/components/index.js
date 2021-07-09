@@ -13,3 +13,4 @@ export {default as ConfirmEmail} from './Authentication/ConfirmEmail';
 
 export {default as ViewFood} from './View/ViewFood';
 export {default as ViewRestaurant} from './View/ViewRestaurant';
+export {default as ViewMenu} from './View/ViewMenu';
