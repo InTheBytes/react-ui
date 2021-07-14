@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Container, Typography, TextField, Button, Box, Link, makeStyles, CircularProgress, Backdrop} from '@material-ui/core';
 import {Alert} from '@material-ui/lab';
 import Axios from "axios";
 import {useHistory} from "react-router-dom";
+import AuthContext from "./AuthContext";
 
 function Login(props) {
 
 	const [message, setMessage] = useState("");
 	const [loading, setLoading] = useState(false);
+
+	const Authentication = useContext(AuthContext);
 
 	const history = useHistory();
 
@@ -23,7 +26,7 @@ function Login(props) {
 			setLoading(false);
 
 			if (response.headers['authentication'].length > 0) {
-				props.setAuth(response.headers['authentication']);
+				Authentication.setAuth(response.headers['authentication']);
 				history.push("/search");
 			} else {
 				setMessage("Authentication error.");

@@ -1,4 +1,5 @@
 import React from "react";
+import useLocalStorage from 'react-use-localstorage';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import {
@@ -13,40 +14,48 @@ import {
     Search,
     ViewFood,
     ViewRestaurant,
-    OrderHistory
+    OrderHistory,
+    ViewMenu
 } from './components';
 
 import './App.css';
+import AuthContext from "./components/Authentication/AuthContext";
+import CartContext from "./components/Cart/CartContext";
+import CartBar from "./components/Cart/CartBar";
 
 function App(props) {
 
     const [sideDrawer, setSideDrawer] = React.useState(false);
-    const [auth, setAuth] = React.useState("");
+    const [cartDrawer, setCartDrawer] = React.useState(false);
+    const [auth, setAuth] = useLocalStorage("jwtAuth", "");
+    const [cart, setCart] = React.useState({});
 
     return (
         <BrowserRouter>
-            <div className="App">
-                <NavigationBar setDrawer={setSideDrawer} auth={auth} />
-                <SideBar drawer={sideDrawer} setDrawer={setSideDrawer} />
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/login" render={() => (
-                        <Login setAuth={setAuth} />
-                    )} />
-                    <Route exact path="/register" component={Register} />
-                    <Route exact path="/logout" render={() => (
-                        <Logout setAuth={setAuth} />
-                    )} />
-                    <Route exact path="/success" component={ConfirmEmail} />
-                    <Route exact path="/search" component={Search} />
-                    <Route path="/foods/:id" component={ViewFood} />
-                    <Route path="/restaurants/:id" component={ViewRestaurant} />
-                    <Route path="/orders" render={() => (
-                        <OrderHistory auth={auth} />
-                    )} />
-                    <Route component={Page404} />
-                </Switch>
-            </div>
+            <AuthContext.Provider value={{auth: auth, setAuth: setAuth}}>
+                <CartContext.Provider value={{cart: cart, setCart: setCart}}>
+                    <div className="App">
+                        <NavigationBar setDrawer={setSideDrawer} setCartDrawer={setCartDrawer} />
+                        <SideBar drawer={sideDrawer} setDrawer={setSideDrawer} />
+                        <CartBar drawer={cartDrawer} setDrawer={setCartDrawer} />
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route exact path="/login" component={Login} />
+                            <Route exact path="/register" component={Register} />
+                            <Route exact path="/logout" component={Logout} />
+                            <Route exact path="/success" component={ConfirmEmail} />
+                            <Route exact path="/search" component={Search} />
+                            <Route path="/foods/:id" component={ViewFood} />
+                            <Route path="/restaurants/:id" component={ViewRestaurant} />
+                            <Route path="/menus/:id" component={ViewMenu} />
+                            <Route path="/orders" render={() => (
+                                <OrderHistory auth={auth} />
+                            )} />
+                            <Route component={Page404} />
+                        </Switch>
+                    </div>
+                </CartContext.Provider>
+            </AuthContext.Provider>
         </BrowserRouter>
     );
 }
