@@ -7,6 +7,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import React, { useState } from "react";
+import AuthContext from "../Authentication/AuthContext";
 import { emailValidator } from "../Authentication/ValidatorRegEx";
 
 function ProfileEditor(props) {
@@ -38,13 +39,11 @@ function ProfileEditor(props) {
   };
 
   const switchForms = () => {
-    passTitle = "Change Password";
-    contactTitle = "Edit Contact Information";
+    let passTitle = "Change Password";
+    let contactTitle = "Edit Contact Information";
     setIsContactInfo(!isContactInfo);
     setTitle(title == passTitle ? contactTitle : passTitle);
   };
-
-
 
   return (
     <Dialog open={props.open} aria-labelledby={setContentToAttribute(title)}>
@@ -57,20 +56,27 @@ function ProfileEditor(props) {
           <Button onClick={switchForms} disabled={!isContactInfo}>
             Password
           </Button>
-          {editComplete ? (
-            confirmationText()
-          ) : isContactInfo ? (
-            <EditContactInfo deny={() => setSubmitDisabled(true)} />
-          ) : (
-            <EditPassword deny={() => setSubmitDisable(true)} />
-          )}
+          <AuthContext.Consumer>
+            {(value) =>
+              editComplete ? (
+                confirmationText()
+              ) : isContactInfo ? (
+                <EditContactInfo
+                  deny={() => setSubmitDisabled(true)}
+                  auth={value}
+                />
+              ) : (
+                <EditPassword
+                  deny={() => setSubmitDisabled(true)}
+                  auth={value}
+                />
+              )
+            }
+          </AuthContext.Consumer>
         </DialogContent>
         <DialogActions>
           {noValidSubmit ? (
-            <Button
-              onClick={() => props.onCancel()}
-              color="primary"
-            >
+            <Button onClick={() => props.onCancel()} color="primary">
               Okay
             </Button>
           ) : (

@@ -36,6 +36,7 @@ function Profile(props) {
         </Grid>
       </Grid>
       <ProfileEditor
+        profile={profile}
         open={isEditorOpened}
         onCancel={() => setIsEditorOpened(false)}
         updateProfile={(newDetails) => setProfile(newDetails)}
