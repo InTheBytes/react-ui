@@ -24,11 +24,8 @@ function App(props) {
     const [sideDrawer, setSideDrawer] = React.useState(false);
     const [auth, setAuth] = React.useState("");
 
-    const AuthContext = React.createContext(auth);
-
     return (
         <BrowserRouter>
-            <AuthContext.Provider value={auth}>
                 <div className="App">
                     <NavigationBar setDrawer={setSideDrawer} auth={auth} />
                     <SideBar drawer={sideDrawer} setDrawer={setSideDrawer} />
@@ -54,7 +51,6 @@ function App(props) {
                         <Route component={Page404} />
                     </Switch>
                 </div>
-            </AuthContext.Provider>
         </BrowserRouter>
     );
 }

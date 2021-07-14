@@ -4,15 +4,16 @@ import { Grid, Typography, Divider } from '@material-ui/core';
 function ProfileDetails(props) {
 
     const formatPhone = (phone) => {
-      const nums = phone.split("").filter((x) => !(isNaN(x)))
+      let nums = phone.split("").filter((x) => !(isNaN(x)))
       if (nums.length >= 11) {
         nums = nums.slice(-10);
       }
+      nums = nums.join('');
       return `(${nums.slice(0, 3)}) ${nums.slice(3, 6)}-${nums.slice(6, 10)}`
     }
   
     return (
-      <Grid container spacing={0} id="profileDetails" aria-label="profile details">
+      <Grid container spacing={0} id="profileDetails" alignItems="center" aria-label="profile details">
         <Grid item xs={12}>
           <Typography component="sub" aria-label="username">
             {props.profile.username}
@@ -31,7 +32,7 @@ function ProfileDetails(props) {
         </Grid>
         <Grid item xs={1} />
         <Grid item xs={10}>
-          <input id="email" value={props.profile.email}/>
+          <p>{props.profile.email}</p>
         </Grid>
           <Divider variant="middle" />
         <Grid item xs={12}>
@@ -41,7 +42,7 @@ function ProfileDetails(props) {
         </Grid>
         <Grid item xs={1}/>
         <Grid item xs={10}>
-          <input id="phone" disabled={true} value={formatPhone(props.profile.phone)}/>
+          <p>{formatPhone(props.profile.phone)}</p>
         </Grid>
       </Grid>
     );
