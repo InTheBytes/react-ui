@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Container, Typography, makeStyles, Button} from '@material-ui/core';
 import Axios from "axios";
-import {Link as RouterLink, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
+import CartContext from "../Cart/CartContext";
 
 function ViewFood(props) {
 
 	let { id } = useParams();
 
 	const [results, setResults] = useState({});
+
+	const CartSystem = useContext(CartContext);
 
 	function getFood(id) {
 		let url = `${process.env.REACT_APP_SL_API_URL}/search/food/${id}`;
@@ -20,6 +23,19 @@ function ViewFood(props) {
 			}, err => {
 				console.log("Error getting food.")
 			});
+	}
+
+	function addToCart(e, food) {
+		let newCart = CartSystem.cart;
+
+		if (CartSystem.cart[food['foodId']] === undefined) {
+			food['quantity'] = 1;
+			newCart[food['foodId']] = food;
+		} else {
+			newCart[food['foodId']]['quantity']++;
+		}
+
+		CartSystem.setCart(newCart);
 	}
 
 	const useStyles = makeStyles((theme) => ({
@@ -51,8 +67,7 @@ function ViewFood(props) {
 					variant="contained"
 					color="primary"
 					size="large"
-					component={RouterLink}
-					to={"/cart/"+ results?.['foodId']}
+					onClick={e => {addToCart(e, results)}}
 				>
 					Add to cart
 				</Button>

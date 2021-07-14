@@ -17,3 +17,4 @@ export {default as ViewRestaurant} from './View/ViewRestaurant';
 export {default as OrderHistory} from './Order/OrderHistory';
 
 export {default as Profile} from './Profile/Profile';
+export {default as ViewMenu} from './View/ViewMenu';
