@@ -3,12 +3,12 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Button,
-  TextField,
+  Button
 } from "@material-ui/core";
 import React, { useState } from "react";
-import AuthContext from "../Authentication/AuthContext";
-import { emailValidator } from "../Authentication/ValidatorRegEx";
+import AuthContext from "../../Authentication/AuthContext";
+import EditContactInfo from "./EditContactInfo";
+import EditPassword from "./EditPassword";
 
 function ProfileEditor(props) {
   const [isContactInfo, setIsContactInfo] = useState(true);
@@ -97,26 +97,6 @@ function ProfileEditor(props) {
         </DialogActions>
       </form>
     </Dialog>
-  );
-}
-
-function EditPassword(props) {
-  return (
-    <>
-      <TextField />
-      <TextField />
-      <TextField />
-    </>
-  );
-}
-
-function EditContactInfo(props) {
-  return (
-    <>
-      <TextField />
-      <TextField />
-      <TextField />
-    </>
   );
 }
 

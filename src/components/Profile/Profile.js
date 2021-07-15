@@ -3,7 +3,7 @@ import { Grid, Button, CircularProgress } from "@material-ui/core";
 import axios from "axios";
 
 import ProfileDetails from "./ProfileDetails";
-import ProfileEditor from "./ProfileEditor";
+import ProfileEditor from "./Editors/ProfileEditor";
 
 function Profile(props) {
   const [profile, setProfile] = useState(null);
