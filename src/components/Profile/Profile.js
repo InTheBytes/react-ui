@@ -3,7 +3,8 @@ import { Grid, Button, CircularProgress } from "@material-ui/core";
 import axios from "axios";
 
 import ProfileDetails from "./ProfileDetails";
-import ProfileEditor from "./Editors/ProfileEditor";
+import EditContactInfo from "./EditContactInfo";
+import AuthContext from "../Authentication/AuthContext";
 
 function Profile(props) {
   const [profile, setProfile] = useState(null);
@@ -35,12 +36,17 @@ function Profile(props) {
           <Button onClick={() => setIsEditorOpened(true)}>Edit Profile</Button>
         </Grid>
       </Grid>
-      <ProfileEditor
-        profile={profile}
-        open={isEditorOpened}
-        onCancel={() => setIsEditorOpened(false)}
-        updateProfile={(newDetails) => setProfile(newDetails)}
-      />
+      <AuthContext.Consumer>
+        {(value) => profile != null ? (
+          <EditContactInfo
+            profile={profile}
+            auth={value}
+            open={isEditorOpened}
+            cancel={() => setIsEditorOpened(false)}
+            updateProfile={(prof) => setProfile(prof)}
+          />
+        ) : <></>}
+      </AuthContext.Consumer>
     </>
   );
 }
