@@ -61,7 +61,6 @@ function EditContactInfo(props) {
     profile.lastName = form.lastName.value;
     profile.email = form.email.value;
     profile.phone = form.phone.value;
-    console.log(profile);
     axios
       .put(
         `${process.env.REACT_APP_SL_API_URL}/user/${props.profile.userId}`,
@@ -77,11 +76,9 @@ function EditContactInfo(props) {
         (resp) => {
           props.updateProfile(resp.data);
           setMessage("Updated profile successfully");
-          console.log("Positive case got called!")
         },
         err => {
           setMessage("Failed to update profile");
-          console.log("Error Happened!")
         }
       );
   };
