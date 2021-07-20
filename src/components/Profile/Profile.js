@@ -37,7 +37,7 @@ function Profile(props) {
         </Grid>
       </Grid>
       <AuthContext.Consumer>
-        {(value) => profile != null ? (
+        {(value) => profile != null && isEditorOpened ? (
           <EditContactInfo
             profile={profile}
             auth={value}

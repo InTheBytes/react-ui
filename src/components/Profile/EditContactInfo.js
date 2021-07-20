@@ -16,6 +16,10 @@ function EditContactInfo(props) {
   const [validations, setValidations] = useState({});
   const [message, setMessage] = useState("");
 
+  const checkValidation = (key) => {
+    return Object.keys(validations).includes(key);
+  }
+
   const validate = (elements) => {
     let newValidation = {};
     //VALIDATE FIRST NAME
@@ -52,11 +56,12 @@ function EditContactInfo(props) {
       setValidations({});
     }
 
-    let profile = props.profile;
+    let profile = Object.fromEntries(Object.entries(props.profile));
     profile.firstName = form.firstName.value;
     profile.lastName = form.lastName.value;
     profile.email = form.email.value;
     profile.phone = form.phone.value;
+    console.log(profile);
     axios
       .put(
         `${process.env.REACT_APP_SL_API_URL}/user/${props.profile.userId}`,
@@ -65,15 +70,18 @@ function EditContactInfo(props) {
           headers: {
             Authentication: props.auth,
           },
+          timeout: 3000
         }
       )
       .then(
         (resp) => {
           props.updateProfile(resp.data);
           setMessage("Updated profile successfully");
+          console.log("Positive case got called!")
         },
-        (err) => {
+        err => {
           setMessage("Failed to update profile");
+          console.log("Error Happened!")
         }
       );
   };
@@ -87,13 +95,17 @@ function EditContactInfo(props) {
             <p>{message}</p>
           ) : (
             <Grid container spacing={2} alignContent="center">
-              {message.length > 0 && <Alert severity="error">{message}</Alert>}
+              {message.length > 0 && (
+                <Grid item xs={12}>
+                  <Alert severity="error">{message}</Alert>
+                </Grid>
+              )}
               <Grid item xs={12} sm={6}>
                 <TextField
                   label="First Name"
                   name="firstName"
                   required
-                  error={"firstName" in validations}
+                  error={checkValidation("firstName")}
                   helperText={validations["firstName"]}
                   defaultValue={props.profile.firstName}
                 />
@@ -103,7 +115,7 @@ function EditContactInfo(props) {
                   label="Last Name"
                   name="lastName"
                   required
-                  error={"lastName" in validations}
+                  error={checkValidation("lastName")}
                   helperText={validations["lastName"]}
                   defaultValue={props.profile.lastName}
                 />
@@ -113,7 +125,8 @@ function EditContactInfo(props) {
                   label="Email Address"
                   name="email"
                   required
-                  error={"email" in validations}
+                  fullWidth
+                  error={checkValidation("email")}
                   helperText={validations["email"]}
                   defaultValue={props.profile.email}
                 />
@@ -123,7 +136,7 @@ function EditContactInfo(props) {
                   label="Phone Number"
                   name="phone"
                   required
-                  error={"phone" in validations}
+                  error={checkValidation("phone")}
                   helperText={validations["phone"]}
                   defaultValue={props.profile.phone}
                 />
