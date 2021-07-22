@@ -1,17 +1,19 @@
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import {Container, Link, makeStyles, Typography} from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import AuthContext from "./AuthContext";
 
 function Logout(props) {
 
 	const history = useHistory();
+	const authentication = useContext(AuthContext);
 
 	useEffect(() => {
-		props.setAuth("");
+		authentication.setAuth("");
 
 		setTimeout(() => {
 			history.push('/login');
-		}, 2000)
+		}, 2000);
 	});
 
 	const useStyles = makeStyles((theme) => ({

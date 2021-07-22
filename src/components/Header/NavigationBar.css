@@ -2,7 +2,7 @@
 	/*margin-left: 100px;*/
 }
 
-#navLogin {
-	margin-left: auto;
+.flushLeft {
+	margin-left: auto !important;
 	/*margin-right: 100px;*/
 }
