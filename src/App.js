@@ -23,6 +23,7 @@ import "./App.css";
 import AuthContext from "./components/Authentication/AuthContext";
 import CartContext from "./components/Cart/CartContext";
 import CartBar from "./components/Cart/CartBar";
+import ResetPassword from "./components/Authentication/ResetPassword";
 
 function App(props) {
   const [sideDrawer, setSideDrawer] = React.useState(false);
@@ -51,6 +52,7 @@ function App(props) {
               <Route path="/foods/:id" component={ViewFood} />
               <Route path="/restaurants/:id" component={ViewRestaurant} />
               <Route path="/menus/:id" component={ViewMenu} />
+              <Route path="/reset-password/:token" component={ResetPassword} />
               <Route
                 path="/orders"
                 render={() => <OrderHistory auth={auth} />}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Button, CircularProgress } from "@material-ui/core";
+import { Grid, Button, CircularProgress, Container } from "@material-ui/core";
 import axios from "axios";
 
 import ProfileDetails from "./ProfileDetails";
@@ -25,7 +25,7 @@ function Profile(props) {
   }, []);
 
   return (
-    <>
+    <Container component="main" maxWidth="xs">
       <Grid container spacing={2} id="profileGrid" alignItems="center">
         <Grid item xs={12}>
           {profile == null ? (
@@ -34,10 +34,10 @@ function Profile(props) {
             <ProfileDetails profile={profile} />
           )}
         </Grid>
-        <Grid item xs={12} id="editOptionsContianer">
+        <Grid item xs={12} sm={6} id="editOptionsContianer">
           <Button onClick={() => setIsEditorOpened(true)}>Edit Profile</Button>
         </Grid>
-        <Grid item xs={12} id="changePasswordLinkContainer">
+        <Grid item xs={12} sm={6} id="changePasswordLinkContainer">
           <Button onClick={() => setChangePassIsOpened(true)}>
             Reset Password
           </Button>
@@ -64,7 +64,7 @@ function Profile(props) {
           onClose={() => setChangePassIsOpened(false)}
         />
       )}
-    </>
+    </Container>
   );
 }
 
