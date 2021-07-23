@@ -4,11 +4,13 @@ import {Alert} from '@material-ui/lab';
 import Axios from "axios";
 import {useHistory} from "react-router-dom";
 import AuthContext from "./AuthContext";
+import ForgotPassword from './ForgotPassword';
 
 function Login(props) {
 
 	const [message, setMessage] = useState("");
 	const [loading, setLoading] = useState(false);
+	const [forgotPassword, setForgotPassword] = useState(false);
 
 	const Authentication = useContext(AuthContext);
 
@@ -111,9 +113,11 @@ function Login(props) {
 			<Backdrop className={classes.backdrop} open={loading}>
 				<CircularProgress size={24} />
 			</Backdrop>
+			<Button onClick={() => setForgotPassword(true)} size="small">Forgot password</Button>
 			<Box position="bottom">
 				Don't have an account? <Link href="/register">Sign Up</Link>
 			</Box>
+			{forgotPassword && <ForgotPassword onClose={() => setForgotPassword(false)}/>}
 		</Container>
 	);
 }

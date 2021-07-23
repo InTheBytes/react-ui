@@ -66,9 +66,10 @@ function NavigationBar(props) {
 							{({auth, setAuth}) => {
 								if (auth?.length > 0) {
 									return (<>
-										<MenuItem component={RouterLink} onClick={handleClose} to="/orders" key="orders">Order History</MenuItem>
+										<MenuItem component={RouterLink} onClick={handleClose} to="/profile" key="profile">View Profile</MenuItem>,
+										<MenuItem component={RouterLink} onClick={handleClose} to="/orders" key="orders">Order History</MenuItem>,
 										<MenuItem component={RouterLink} onClick={handleClose} to="/logout" key="logout">Logout</MenuItem>
-									</>)
+										</>)
 								} else {
 									return (<>
 										<MenuItem component={RouterLink} onClick={handleClose} to="/login"  key="login">Login</MenuItem>
