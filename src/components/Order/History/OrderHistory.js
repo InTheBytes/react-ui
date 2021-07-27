@@ -3,7 +3,7 @@ import { Grid, List, ListItem } from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";
 import axios from "axios";
 import OrderListing from "./OrderListing.js";
-import OrderDetails from "./OrderDetails.js";
+import OrderDetails from "../OrderDetails.js";
 
 import "./OrderHistory.css";
 
