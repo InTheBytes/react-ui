@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link as RouterLink} from 'react-router-dom';
 
 import "./ViewResults.css";
 import {Pagination} from "@material-ui/lab";
@@ -20,12 +21,15 @@ function ViewResults(props) {
 			return (<>
 				<ul className="resultList">
 					{props.results.content?.map(data => (
-						<li id={`food-${data['foodId']}`}>
-							<a href={`foods/${data['foodId']}`}>
+						<li id={`food-${data['foodId']}`} key={data['foodId']}>
+							<RouterLink
+								to={`foods/${data['foodId']}`}
+								className="Nav__link"
+							>
 								<span className="resultImage"><img src={"./logo.png"} alt={`${data['name']}`} width="30px" /></span>
 								<span className="resultName">{data['name']}</span>
 								<span className="resultDetail">${data['price']}</span>
-							</a>
+							</RouterLink>
 						</li>
 					))}
 				</ul>
@@ -36,11 +40,14 @@ function ViewResults(props) {
 				<ul className="resultList">
 					{props.results.content?.map(data => (
 						<li id={`food-${data['restaurantId']}`}>
-							<a href={`restaurants/${data['restaurantId']}`}>
+							<RouterLink
+								to={`restaurants/${data['restaurantId']}`}
+								className="Nav__link"
+							>
 								<span className="resultImage"><img src={"./logo.png"} alt={`${data['name']} restaurant`} width="30px" /></span>
 								<span className="resultName">{data['name']}</span>
 								<span className="resultDetail">[More Info]</span>
-							</a>
+							</RouterLink>
 						</li>
 					))}
 				</ul>
