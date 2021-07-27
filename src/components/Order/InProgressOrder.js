@@ -1,10 +1,10 @@
 import React from 'react';
 
-function SubmitOrder(props) {
-    
+function InProgressOrder(props) {
+
     return (
         <></>
     );
 };
 
-export default SubmitOrder;
+export default InProgressOrder;
