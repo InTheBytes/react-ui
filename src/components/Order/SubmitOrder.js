@@ -1,8 +1,10 @@
-import React from 'react';
-import { Container, Grid, Backdrop, CircularProgress, TextField } from '@material-ui/core';
+import React, {useState} from 'react';
+import { Container, Grid, Backdrop, CircularProgress } from '@material-ui/core';
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import TimeWindowSelect from './SubmissionComponents/TimeWindowSelect';
+import Cart from '../Cart/Cart';
+import DestinationForm from './SubmissionComponents/DestinationForm';
 
 function SubmitOrder(props) {
 
@@ -11,16 +13,14 @@ function SubmitOrder(props) {
     const [processing, setProcessing] = useState(false);
     const [location, setLocation] = useState({});
 
-
-    const checkValidation = (key) => {
-        return Object.keys(validations).includes(key);
-      }
-
     const onToken = (token) => {
         let url = `${process.env.REACT_APP_SL_API_URL}`
         setProcessing(true);
         
     };
+
+    const stripePrice = 0;
+    const price = 0;
 
     return (
         <Container component='main' maxWidth='sm'>

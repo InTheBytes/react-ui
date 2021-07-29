@@ -10,14 +10,28 @@ function DestinationForm(props) {
     const [state, setState] = useState("");
     const [zip, setZip] = useState("");
 
+    
+    const statesList = [
+        "AL", "AK", "AZ", "AR", "CA", 
+        "CO", "CT", "DE", "FL", "GA", 
+        "HI", "ID", "IL", "IN", "IA", 
+        "KS", "KY", "LA", "ME", "MD", 
+        "MA", "MI", "MN", "MS", "MO",
+        "MT", "NE", "NV", "NH", "NJ",
+        "NM", "NY", "NC", "ND", "OH",
+        "OK", "OR", "PA", "RI", "SC",
+        "SD", "TN", "TX", "UT", "VT",
+        "VA", "WA", "WV", "WI", "WY"
+    ]
+
     const checkValidations = (key) => {
         return Object.keys(validations).includes(key);
     }
 
     const addValidation = (name, text) => {
-        newValidation = Object.assign({}, validations);
+        let newValidation = Object.assign({}, validations);
         newValidation[name] = text;
-        setValidations(newValidations);
+        setValidations(newValidation);
     }
 
     const validate = (boolExp, setter, val, name, text) => {
@@ -31,8 +45,8 @@ function DestinationForm(props) {
     }
 
     const updateAddress = (newAddress) => {
-        addressList = newAddress.split(' ');
-        boolCheck = newAddress.trim().length > 0 && addressList.length >= 2;
+        let addressList = newAddress.split(' ');
+        let boolCheck = newAddress.trim().length > 0 && addressList.length >= 2;
         validate(
             boolCheck && !isNaN(addressList[0]),
             setUnit, addressList.shift(),
@@ -55,7 +69,7 @@ function DestinationForm(props) {
 
     const updateZip = (newZip) => {
         validate(
-            newZip.length == 5 && !isNan(newZip),
+            newZip.length == 5 && !isNaN(newZip),
             setZip, newZip,
             'zip', "Please enter a valid 5-digit zip code"
         )
@@ -133,16 +147,3 @@ function DestinationForm(props) {
 }
 
 export default DestinationForm;
-
-statesList = [
-    "AL", "AK", "AZ", "AR", "CA", 
-    "CO", "CT", "DE", "FL", "GA", 
-    "HI", "ID", "IL", "IN", "IA", 
-    "KS", "KY", "LA", "ME", "MD", 
-    "MA", "MI", "MN", "MS", "MO",
-    "MT", "NE", "NV", "NH", "NJ",
-    "NM", "NY", "NC", "ND", "OH",
-    "OK", "OR", "PA", "RI", "SC",
-    "SD", "TN", "TX", "UT", "VT",
-    "VA", "WA", "WV", "WI", "WY"
-]
