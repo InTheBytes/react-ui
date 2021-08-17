@@ -34,6 +34,7 @@ function Cart(props) {
 								<TableRow>
 									<TableCell>
 										<Typography 
+											aria-label={food['name']}
 											component={RouterLink} 
 											to={`/foods/${foodId}`} 
 											color='textPrimary' 
@@ -47,9 +48,9 @@ function Cart(props) {
 											aria-label="small outlined button group" 
 											key={foodId} alignItems="left"
 										>
-											<Button onClick={() => handleDecrease(food)}>-</Button>
-											<Button disabled>{food['quantity']}</Button>
-											<Button onClick={() => handleIncrease(food)}>+</Button>
+											<Button onClick={() => handleDecrease(food)} aria-label='decrease'>-</Button>
+											<Button disabled aria-label='quantity'>{food['quantity']}</Button>
+											<Button onClick={() => handleIncrease(food)} aria-label='increase'>+</Button>
 										</ButtonGroup>
 									</TableCell>
 								</TableRow>

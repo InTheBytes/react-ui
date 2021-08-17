@@ -69,7 +69,7 @@ function DestinationForm(props) {
 
     const updateZip = (newZip) => {
         validate(
-            newZip.length == 5 && !isNaN(newZip),
+            newZip.length === 5 && !isNaN(newZip),
             setZip, newZip,
             'zip', "Please enter a valid 5-digit zip code"
         )
@@ -83,7 +83,7 @@ function DestinationForm(props) {
     const tryUpdate = () => {
         let values = [unit, street, city, state, zip]
         for (let val in values) {
-            if (val.length == 0) return
+            if (val.length === 0) return
         }
         props.updateLocation({
             unit: unit,
@@ -101,25 +101,39 @@ function DestinationForm(props) {
                     required
                     fullWidth
                     aria-label='address'
+                    label='Street Address'
                     name='Address'
                     error={checkValidations("address")}
                     helperText={validations["address"]}
                     onChange={(event) => setTimeout(() => updateAddress(event.target.value), 1000)}
                 />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={8}>
                 <TextField 
                     required
-                    fullWidth
                     aria-label='city'
+                    label='City'
                     name='City'
                     error={checkValidations("city")}
                     helperText={validations["city"]}
                     onChange={(event) => setTimeout(() => updateCity(event.target.value), 3000)}
                 />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={4}>
+                <TextField
+                    required
+                    fullWidth
+                    aria-label='zip-code'
+                    label='Zip Code'
+                    name='Zip Code'
+                    error={checkValidations("zip")}
+                    helperText={validations["zip"]}
+                    onChange={(event) => setTimeout(() => updateZip(event.target.value), 3000)}
+                />
+            </Grid>
+            <Grid item xs={4}>
                 <Select 
+                    required
                     aria-label='state'
                     value={state}
                     onChange={(event) => updateState(event.target.value)}
@@ -127,20 +141,9 @@ function DestinationForm(props) {
                 >
                     <MenuItem value="" disabled>Select State</MenuItem>
                     {statesList.map((item) => 
-                        <MenuItem value={item}>{item}</MenuItem>
+                        <MenuItem value={item} key={item}>{item}</MenuItem>
                     )}
                 </Select>
-            </Grid>
-            <Grid item xs={4}>
-                <TextField
-                    required
-                    fullWidth
-                    aria-label='zip-code'
-                    name='Zip Code'
-                    error={checkValidations("zip")}
-                    helperText={validations["zip"]}
-                    onChange={(event) => setTimeout(() => updateZip(event.target.value), 3000)}
-                />
             </Grid>
         </Grid>
     );

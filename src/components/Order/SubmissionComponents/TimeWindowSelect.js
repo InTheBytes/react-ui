@@ -28,7 +28,7 @@ function TimeWindowSelect(props) {
     return (
         <FormControl component='fieldset'>
             {windowOptions && (<>
-                <FormLabel component='legend'>Time Window for {moment(windowOptions[0]["start"]).format("MMM, Do")}</FormLabel>
+                <FormLabel component='h6' aria-label='time-label'>Time Window for {moment(windowOptions[0]["start"]).format("MMM, Do")}</FormLabel>
                 <RadioGroup 
                     aria-label='time-window' 
                     name='time-window' 
@@ -38,6 +38,7 @@ function TimeWindowSelect(props) {
                     {windowOptions && windowOptions.map((item) => 
                             <FormControlLabel 
                                 key={item['start']}
+                                aria-label={`time-${moment(item['start']).hour()}`}
                                 value={`${windowOptions.indexOf(item)}`} 
                                 control={<Radio />} 
                                 label={`${moment(item['start']).format("h a")} - ${moment(item['end']).format('h a')}`} />

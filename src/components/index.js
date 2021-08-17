@@ -19,3 +19,4 @@ export {default as OrderHistory} from './Order/History/OrderHistory';
 export {default as Profile} from './Profile/Profile';
 export {default as ViewMenu} from './View/ViewMenu';
 export {default as SubmitOrder} from './Order/SubmitOrder';
+export {InProgressOrder, OrderTrackingWrapper } from './Order/InProgressOrder';

@@ -17,6 +17,7 @@ import {
   OrderHistory,
   Profile,
   ViewMenu,
+  OrderTrackingWrapper,
 } from "./components";
 
 import "./App.css";
@@ -55,6 +56,7 @@ function App(props) {
               <Route path="/menus/:id" component={ViewMenu} />
               <Route path="/reset-password/:token" component={ResetPassword} />
               <Route path="/checkout" component={SubmitOrder} />
+              <Route path="/orders/:id" component={OrderTrackingWrapper} />
               <Route
                 path="/orders"
                 render={() => <OrderHistory auth={auth} />}
