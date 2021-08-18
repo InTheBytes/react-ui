@@ -43,34 +43,42 @@ function SubmitOrder(props) {
         }
     }, [auth])
 
+    const createOrder = () => {
+        let order = {
+            destination: {
+                unit: location.unit,
+                street: location.street,
+                city: location.city,
+                state: location.state,
+                zipCode: parseInt(location.zip)
+            },
+            restaurantId: items[0]?.restaurantId,
+            customerId: profile?.userId,
+            windowStart: moment(timeWindow.start).format('YYYY-MM-DD HH:mm:ss'),
+            windowEnd: moment(timeWindow.end).format('YYYY-MM-DD HH:mm:ss'),
+            items: items.map((food) => ({
+                food: food.foodId,
+                quantity: food.quantity
+            }))
+        }
+        if (profile.role.name === "customer") {
+            delete order.customerId
+        }
+        return order;
+    }
+
     const onToken = async (token) => {
         setProcessing(true);
-        console.log(auth)
-        console.log(items)
-
-        const { data } = await axios.post(`${process.env.REACT_APP_SL_API_URL}/order`,
-            {
-                destination: {
-                    unit: location.unit,
-                    street: location.street,
-                    city: location.city,
-                    state: location.state,
-                    zipCode: parseInt(location.zip)
-                },
-                restaurantId: "",
-                customerId: profile.userId,
-                windowStart: moment(timeWindow.start).format('YYYY-MM-DD HH:mm:ss'),
-                windowEnd: moment(timeWindow.end).format('YYYY-MM-DD HH:mm:ss'),
-                items: items
-            },
-            {headers: {'authentication': `${auth}`}
+        if (price <= 0.50) {
             
+        } else {
+        const { data } = await axios.post(`${process.env.REACT_APP_SL_API_URL}/order`,
+            createOrder(), {headers: {'authentication': `${auth}`}
         });
-        
         axios.post(
             `${process.env.REACT_APP_SL_API_URL}/payment/stripe`,
             {
-                amount: price,
+                amount: price * 100,
                 token,
                 currency: "USD",
                 orderId: data.id,
@@ -78,10 +86,10 @@ function SubmitOrder(props) {
             }
         ).then(
             (resp) => {
-                alert("Order submitted successfully!");
-                history.push(`/order/${data.id}`);
+                setProcessing(false)
+                history.push(`/orders/${data.id}`);
             }
-        )
+        )}
     };
 
     return (

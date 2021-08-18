@@ -39,11 +39,8 @@ export function InProgressOrder(props) {
     const [order, setOrder] = useState({})
     const [timer, setTimer] = useState(null)
 
-    const fetchOrder = () => {
-    }
-
     useEffect(() => {
-        if (props.auth.length && props.auth.length > 0 && !timer) {    
+        function fetchOrder() {    
             axios.get(`${process.env.REACT_APP_SL_API_URL}/order/${props.id}`, {
                 headers: { Authentication: props.auth }})
                 .then(
@@ -61,6 +58,9 @@ export function InProgressOrder(props) {
                         }
                     }
                 )
+        }
+        if (props.auth.length && props.auth.length > 0 && !timer) {
+            fetchOrder()
         }
     }, [props.auth, timer, props.id, history])
 
