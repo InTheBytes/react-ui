@@ -5,7 +5,6 @@ import moment from 'moment';
 function TimeWindowSelect(props) {
 
     const [windowOptions, setWindowOptions] = useState(null);
-    const [value, setValue] = useState(0);
 
     useEffect(() => {
         let isAvailableToday = moment().hour() <= 20
@@ -21,7 +20,6 @@ function TimeWindowSelect(props) {
     }, [])
 
     const handleChange = (event) => {
-        setValue(event.target.value);
         props.changeWindow(windowOptions[event.target.value]);
     }
 
@@ -32,7 +30,7 @@ function TimeWindowSelect(props) {
                 <RadioGroup 
                     aria-label='time-window' 
                     name='time-window' 
-                    value={`${value}`} 
+                    value={0} 
                     onChange={handleChange}
                 >
                     {windowOptions && windowOptions.map((item) => 

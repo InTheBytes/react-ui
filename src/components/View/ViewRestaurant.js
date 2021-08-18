@@ -29,19 +29,6 @@ function ViewRestaurant(props) {
 			});
 	}
 
-	function getMenu(id) {
-		let url = `${process.env.REACT_APP_SL_API_URL}/search/menu/${id}?page=${page}`;
-
-		Axios.get(url)
-			.then((results) => {
-				console.dir(results);
-
-				setMenuResults(results.data);
-			}, err => {
-				console.log("Error getting food.")
-			});
-	}
-
 	const useStyles = makeStyles((theme) => ({
 		paper: {
 			marginTop: theme.spacing(8),
@@ -53,7 +40,16 @@ function ViewRestaurant(props) {
 
 	useEffect(()=>{
 		getRestaurant(id);
-		getMenu(id);
+		
+		let url = `${process.env.REACT_APP_SL_API_URL}/search/menu/${id}?page=${page}`;
+		Axios.get(url)
+			.then((results) => {
+				console.dir(results);
+
+				setMenuResults(results.data);
+			}, err => {
+				console.log("Error getting food.")
+		});
 	}, [id, page]) // <-- empty dependency array
 
 	const classes = useStyles();

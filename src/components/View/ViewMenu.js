@@ -15,19 +15,6 @@ function ViewMenu(props) {
 		setPage(value);
 	};
 
-	function getMenu(id) {
-		let url = `${process.env.REACT_APP_SL_API_URL}/search/menu/${id}?page=${page}`;
-
-		Axios.get(url)
-			.then((results) => {
-				console.dir(results);
-
-				setResults(results.data);
-			}, err => {
-				console.log("Error getting food.")
-			});
-	}
-
 	function getRestaurant(id) {
 		let url = `${process.env.REACT_APP_SL_API_URL}/apis/restaurant/${id}`;
 
@@ -51,7 +38,16 @@ function ViewMenu(props) {
 	}));
 
 	useEffect(()=>{
-		getMenu(id);
+		let url = `${process.env.REACT_APP_SL_API_URL}/search/menu/${id}?page=${page}`;
+
+		Axios.get(url)
+			.then((results) => {
+				console.dir(results);
+
+				setResults(results.data);
+			}, err => {
+				console.log("Error getting food.")
+			});
 	}, [id, page]) // <-- empty dependency array
 
 	const classes = useStyles();

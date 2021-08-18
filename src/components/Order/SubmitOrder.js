@@ -20,6 +20,7 @@ function SubmitOrder(props) {
     const [processing, setProcessing] = useState(false);
     const [payEnabled, setPayEnabled] = useState(false);
     const [items, setItems] = useState([]);
+    const [profile, setProfile] = useState(null)
 
     const history = useHistory();
 
@@ -30,20 +31,25 @@ function SubmitOrder(props) {
             ready = (ready && locProps.includes(x) && location[x].length > 0)
         });
         setPayEnabled(ready && Object.entries(timeWindow).length > 0 && price > 0 && items.length > 0)
-    }, [timeWindow, location, price, setPayEnabled])
+    }, [timeWindow, location, price, items])
+
+    useEffect(() => {
+        if (auth.length > 0) {
+            axios.get(`${process.env.REACT_APP_SL_API_URL}/user/profile`, {
+                headers: {"authentication": auth}
+            }).then(
+                (resp) => (setProfile(resp.data))
+            )
+        }
+    }, [auth])
 
     const onToken = async (token) => {
         setProcessing(true);
+        console.log(auth)
+        console.log(items)
 
-        const { data } = await axios({
-            url: `${process.env.REACT_APP_SL_API_URL}/order`,
-            method: 'post',
-            headers: {
-                'Authentication': `${auth}`,
-                'content-type': 'application/x-www-form-urlencoded',
-                'Access-Control-Allow-Headers': 'Authentication'
-            },
-            data: {
+        const { data } = await axios.post(`${process.env.REACT_APP_SL_API_URL}/order`,
+            {
                 destination: {
                     unit: location.unit,
                     street: location.street,
@@ -51,10 +57,14 @@ function SubmitOrder(props) {
                     state: location.state,
                     zipCode: parseInt(location.zip)
                 },
+                restaurantId: "",
+                customerId: profile.userId,
                 windowStart: moment(timeWindow.start).format('YYYY-MM-DD HH:mm:ss'),
                 windowEnd: moment(timeWindow.end).format('YYYY-MM-DD HH:mm:ss'),
                 items: items
-            }
+            },
+            {headers: {'authentication': `${auth}`}
+            
         });
         
         axios.post(
@@ -127,7 +137,7 @@ function SubmitOrder(props) {
                                         name='tip-value'
                                         value={`$${tip.toFixed(2)}`} 
                                         onChange={(event) => {
-                                            if (event.target.value != tip) setTip(event.target.value)
+                                            if (event.target.value !== tip) setTip(event.target.value)
                                         }}
                                     />
                                     <Typography variant='caption' aria-label='tip-instruction'>

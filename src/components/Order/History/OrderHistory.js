@@ -13,7 +13,7 @@ function OrderHistory(props) {
   const [detailsOpened, setDetailsOpened] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
 
-  const fetchPage = () => {
+  useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_SL_API_URL}/order`, {
         headers: { Authentication: props.auth },
@@ -25,21 +25,13 @@ function OrderHistory(props) {
       .then((resp) => {
         setResult(resp.data);
       });
-  }
-
-  useEffect(() => {
-    fetchPage();
-  }, []);
-
-  useEffect(() => {
-    fetchPage();
-  }, [page]);
+  }, [page, props.auth]);
 
   useEffect(() => {
     if (detailsOpened != null) {
       setDetailsOpened(true);
     }
-  }, [selectedOrder]);
+  }, [selectedOrder, detailsOpened]);
 
   const changePage = (e, val) => {
     setPage(val);

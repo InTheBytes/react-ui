@@ -34,34 +34,35 @@ export function OrderTrackingWrapper(props) {
 
 export function InProgressOrder(props) {
     const classes = useStyles()
+    const history = useHistory()
 
     const [order, setOrder] = useState({})
     const [timer, setTimer] = useState(null)
 
     const fetchOrder = () => {
-        axios.get(`${process.env.REACT_APP_SL_API_URL}/order/${props.id}`, {
-            headers: { Authentication: props.auth }})
-            .then(
-                (resp) => {
-                    setOrder(resp.data)
-                    let code = Number(resp.data.status.split(' ')[0])
-                    if (code !== 4 && code !== 5) {   
-                        let clock = setTimeout(() => fetchOrder(), 15000)
-                        setTimer(clock)
-                    }
-                }, (err) => {
-                    if (err.response?.status == 401 || err.response?.status == 403) {
-                        alert('Not authorized to track this order')
-                    }
-                }
-            )
     }
 
     useEffect(() => {
-        if (props.auth.length && props.auth.length > 0 && !timer) {
-            fetchOrder()
+        if (props.auth.length && props.auth.length > 0 && !timer) {    
+            axios.get(`${process.env.REACT_APP_SL_API_URL}/order/${props.id}`, {
+                headers: { Authentication: props.auth }})
+                .then(
+                    (resp) => {
+                        setOrder(resp.data)
+                        let code = Number(resp.data.status.split(' ')[0])
+                        if (code !== 4 && code !== 5) {   
+                            let clock = setTimeout(() => fetchOrder(), 15000)
+                            setTimer(clock)
+                        }
+                    }, (err) => {
+                        if (err.response?.status === 401 || err.response?.status === 403) {
+                            alert('Not authorized to track this order')
+                            history.push('/error')
+                        }
+                    }
+                )
         }
-    }, [])
+    }, [props.auth, timer, props.id, history])
 
     useEffect(() => {
         return () => clearTimeout(timer)
@@ -91,6 +92,8 @@ export function InProgressOrder(props) {
             case 5:
                 title = "Order has been cancelled"
                 step = -1
+                break
+            default:
         }
         return {
             title: title,
