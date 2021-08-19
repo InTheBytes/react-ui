@@ -1,5 +1,5 @@
 import { Grid, MenuItem, Select, TextField } from '@material-ui/core';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 function DestinationForm(props) {
 
@@ -38,7 +38,6 @@ function DestinationForm(props) {
         delete validations[name];
         if (boolExp) {
             setter(val);
-            tryUpdate();
         } else {
             addValidation(name, text);
         }
@@ -49,12 +48,12 @@ function DestinationForm(props) {
         let boolCheck = newAddress.trim().length > 0 && addressList.length >= 2;
         validate(
             boolCheck && !isNaN(addressList[0]),
-            setUnit, addressList.shift(),
+            setUnit, addressList.shift().trim(),
             'address', "Please include both the street and your unit"
         )
         validate(
             boolCheck && isNaN(addressList.join(' ')),
-            setStreet, addressList.join(' '),
+            setStreet, addressList.join(' ').trim(),
             'address', "Please include both the street and your unit"
         )
     }
@@ -62,25 +61,24 @@ function DestinationForm(props) {
     const updateCity = (newCity) => {
         validate(
             newCity.trim().length > 0, 
-            setCity, newCity, 
+            setCity, newCity.trim(), 
             'city', "A valid city name must be included"
         )
     }
 
     const updateZip = (newZip) => {
         validate(
-            newZip.length === 5 && !isNaN(newZip),
-            setZip, newZip,
+            newZip.trim().length === 5 && !isNaN(newZip.trim()),
+            setZip, newZip.trim(),
             'zip', "Please enter a valid 5-digit zip code"
         )
     }
 
     const updateState = (newState) => {
         setState(newState);
-        tryUpdate();
     }
 
-    const tryUpdate = () => {
+    useEffect(() => {
         let values = [unit, street, city, state, zip]
         for (let val in values) {
             if (val.length === 0) return
@@ -92,7 +90,7 @@ function DestinationForm(props) {
             state: state,
             zip: zip
         })
-    }
+    }, [unit, street, city, state, zip])
 
     return (
         <Grid container spacing={2}>
@@ -116,7 +114,7 @@ function DestinationForm(props) {
                     name='City'
                     error={checkValidations("city")}
                     helperText={validations["city"]}
-                    onChange={(event) => setTimeout(() => updateCity(event.target.value), 3000)}
+                    onChange={(event) => setTimeout(() => updateCity(event.target.value), 1000)}
                 />
             </Grid>
             <Grid item xs={4}>
@@ -128,7 +126,7 @@ function DestinationForm(props) {
                     name='Zip Code'
                     error={checkValidations("zip")}
                     helperText={validations["zip"]}
-                    onChange={(event) => setTimeout(() => updateZip(event.target.value), 3000)}
+                    onChange={(event) => setTimeout(() => updateZip(event.target.value), 1000)}
                 />
             </Grid>
             <Grid item xs={4}>

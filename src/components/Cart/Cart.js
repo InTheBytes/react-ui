@@ -31,7 +31,7 @@ function Cart(props) {
 					<Table>
 						<TableBody>
 							{Object.entries(context.cart).map(([foodId, food]) => (
-								<TableRow>
+								<TableRow key={foodId}>
 									<TableCell>
 										<Typography 
 											aria-label={food['name']}
@@ -46,7 +46,7 @@ function Cart(props) {
 										<ButtonGroup 
 											size="small" 
 											aria-label="small outlined button group" 
-											key={foodId} alignItems="left"
+											key={foodId}
 										>
 											<Button onClick={() => handleDecrease(food)} aria-label='decrease'>-</Button>
 											<Button disabled aria-label='quantity'>{food['quantity']}</Button>
