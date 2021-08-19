@@ -137,7 +137,7 @@ export function InProgressOrder(props) {
                                         {item.name}
                                     </TableCell>
                                     <TableCell>
-                                        ${Number(item.quantity * item.price).toFixed(2)}
+                                        ${Number(item.price).toFixed(2)}
                                     </TableCell>
                                 </TableRow>
                             )})}
