@@ -33,7 +33,7 @@ function CartBar(props) {
 			role="sidebar"
 			className="sideBar"
 		>
-			<Cart />
+			<Cart backdrop={false}/>
 			<CartContext.Consumer>
 				{(value) => {
 					return (Object.entries(value.cart).length > 0) ?

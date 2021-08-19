@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
   tip: {
       display: "flex",
       justifyContent: "flex-end"
+  },
+  backdrop: {
+      zIndex: theme.zIndex.drawer + 1
   }
 }));
 
@@ -131,7 +134,10 @@ function SubmitOrder(props) {
     }
   };
 
-  return (
+  return (<>
+    <Backdrop open={processing} className={classes.backdrop}>
+        <CircularProgress />
+    </Backdrop>
     <Container component="main" maxWidth="sm">
       <AuthContext.Consumer>
         {(context) => {
@@ -179,7 +185,7 @@ function SubmitOrder(props) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Card className={classes.cart}>
-            <Cart />
+            <Cart/>
             <div className={classes.subtotal}>
               <div>
                 <Typography variant="h6" aria-label="subtotal">
@@ -242,11 +248,8 @@ function SubmitOrder(props) {
           />
         </Grid>
       </Grid>
-      <Backdrop open={processing}>
-        <CircularProgress />
-      </Backdrop>
     </Container>
-  );
+  </>);
 }
 
 export default SubmitOrder;

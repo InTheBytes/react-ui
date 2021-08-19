@@ -103,7 +103,7 @@ function DestinationForm(props) {
                     name='Address'
                     error={checkValidations("address")}
                     helperText={validations["address"]}
-                    onChange={(event) => setTimeout(() => updateAddress(event.target.value), 1000)}
+                    onChange={(event) => setTimeout(() => updateAddress(event.target.value), 2000)}
                 />
             </Grid>
             <Grid item xs={8}>
@@ -114,7 +114,7 @@ function DestinationForm(props) {
                     name='City'
                     error={checkValidations("city")}
                     helperText={validations["city"]}
-                    onChange={(event) => setTimeout(() => updateCity(event.target.value), 1000)}
+                    onChange={(event) => setTimeout(() => updateCity(event.target.value), 2000)}
                 />
             </Grid>
             <Grid item xs={4}>
@@ -126,7 +126,7 @@ function DestinationForm(props) {
                     name='Zip Code'
                     error={checkValidations("zip")}
                     helperText={validations["zip"]}
-                    onChange={(event) => setTimeout(() => updateZip(event.target.value), 1000)}
+                    onChange={(event) => setTimeout(() => updateZip(event.target.value), 2000)}
                 />
             </Grid>
             <Grid item xs={4}>

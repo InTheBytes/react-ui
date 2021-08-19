@@ -36,6 +36,7 @@ function ViewFood(props) {
 		}
 
 		CartSystem.setCart(newCart);
+		props.onAddToCart(true)
 	}
 
 	const useStyles = makeStyles((theme) => ({

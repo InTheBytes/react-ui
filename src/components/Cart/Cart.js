@@ -28,35 +28,35 @@ function Cart(props) {
 				}
 
 				return (
-					<Table>
-						<TableBody>
-							{Object.entries(context.cart).map(([foodId, food]) => (
-								<TableRow key={foodId}>
-									<TableCell>
-										<Typography 
-											aria-label={food['name']}
-											component={RouterLink} 
-											to={`/foods/${foodId}`} 
-											color='textPrimary' 
-											variant='body1'>
-											{food['name']}
-										</Typography>
-									</TableCell>
-									<TableCell>
-										<ButtonGroup 
-											size="small" 
-											aria-label="small outlined button group" 
-											key={foodId}
-										>
-											<Button onClick={() => handleDecrease(food)} aria-label='decrease'>-</Button>
-											<Button disabled aria-label='quantity'>{food['quantity']}</Button>
-											<Button onClick={() => handleIncrease(food)} aria-label='increase'>+</Button>
-										</ButtonGroup>
-									</TableCell>
-								</TableRow>
-							))}
-						</TableBody>
-					</Table>
+						<Table>
+							<TableBody>
+								{Object.entries(context.cart).map(([foodId, food]) => (
+									<TableRow key={foodId}>
+										<TableCell>
+											<Typography 
+												aria-label={food['name']}
+												component={RouterLink} 
+												to={`/foods/${foodId}`} 
+												color='textPrimary' 
+												variant='body1'>
+												{food['name']}
+											</Typography>
+										</TableCell>
+										<TableCell>
+											<ButtonGroup 
+												size="small" 
+												aria-label="small outlined button group" 
+												key={foodId}
+											>
+												<Button onClick={() => handleDecrease(food)} aria-label='decrease'>-</Button>
+												<Button disabled aria-label='quantity'>{food['quantity']}</Button>
+												<Button onClick={() => handleIncrease(food)} aria-label='increase'>+</Button>
+											</ButtonGroup>
+										</TableCell>
+									</TableRow>
+								))}
+							</TableBody>
+						</Table>
 				)
 			}}
 		</CartContext.Consumer>

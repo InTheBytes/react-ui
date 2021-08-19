@@ -51,7 +51,7 @@ function App(props) {
               <Route exact path="/logout" component={Logout} />
               <Route exact path="/success" component={ConfirmEmail} />
               <Route exact path="/search" component={Search} />
-              <Route path="/foods/:id" component={ViewFood} />
+              <Route path="/foods/:id" render={() => <ViewFood onAddToCart={setCartDrawer}/>} />
               <Route path="/restaurants/:id" component={ViewRestaurant} />
               <Route path="/menus/:id" component={ViewMenu} />
               <Route path="/reset-password/:token" component={ResetPassword} />
