@@ -21,7 +21,7 @@ function ViewResults(props) {
 			return (<>
 				<ul className="resultList">
 					{props.results.content?.map(data => (
-						<li id={`food-${data['foodId']}`} key={data['foodId']}>
+						<li id={`food-${data['foodId']}`} key={data['foodId'] ?? `null-food-${props.results.content.indexOf(data)}`}>
 							<RouterLink
 								to={`foods/${data['foodId']}`}
 								className="Nav__link"
@@ -39,7 +39,7 @@ function ViewResults(props) {
 			return (<>
 				<ul className="resultList">
 					{props.results.content?.map(data => (
-						<li id={`food-${data['restaurantId']}`}>
+						<li id={`food-${data['restaurantId']}`} key={data['restaurantId'] ?? `null-restaurant-${props.results.content.indexOf(data)}`}>
 							<RouterLink
 								to={`restaurants/${data['restaurantId']}`}
 								className="Nav__link"
