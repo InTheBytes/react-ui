@@ -1,8 +1,18 @@
 import React from 'react';
-import {SwipeableDrawer, Typography, ButtonGroup, Button} from '@material-ui/core';
+import {Button, makeStyles, SwipeableDrawer} from '@material-ui/core';
 import {Link as RouterLink} from 'react-router-dom';
+import Cart from './Cart';
 import './CartBar.css';
-import CartContext from "./CartContext";
+import CartContext from './CartContext';
+
+const useStyles = makeStyles((theme) => ({
+	checkout_link: {
+		position: 'absolute',
+		margin: theme.spacing(1, 1, 1),
+		bottom: 2,
+		width: '95%'
+	}
+}))
 
 function CartBar(props) {
 
@@ -11,6 +21,8 @@ function CartBar(props) {
 			props.setDrawer(open);
 		}
 	};
+
+	const classes = useStyles()
 
 	return (
 		<SwipeableDrawer
@@ -21,40 +33,19 @@ function CartBar(props) {
 			role="sidebar"
 			className="sideBar"
 		>
+			<Cart backdrop={false}/>
 			<CartContext.Consumer>
-				{(context) => {
-
-					console.dir(context.cart)
-
-					let handleIncrease = (e, food) => {
-						let newCart = context.cart;
-
-						newCart[food['foodId']].quantity++;
-
-						context.setCart(newCart)
-					}
-
-					let handleDecrease = (e, food) => {
-						let newCart = context.cart;
-
-						newCart[food['foodId']].quantity--;
-
-						context.setCart(newCart)
-					}
-
-					return Object.keys(context.cart).map((foodId, index) => {
-						let food = context.cart[foodId];
-
-						if (food.quantity > 0) return (
-							<ButtonGroup size="small" aria-label="small outlined button group" key={food['foodId']}>
-								<Typography component={RouterLink} to={`/foods/${food['foodId']}`} key={food['foodId']}>{food['name']}</Typography>
-								<Button onClick={e => {handleDecrease(e, food)}} key={food['foodId']}>-</Button>
-								<Button disabled key={food['foodId']}>{food['quantity']}</Button>
-								<Button onClick={e => {handleIncrease(e, food)}} key={food['foodId']}>+</Button>
-							</ButtonGroup>
-						)
-						else context.setCart("")
-					})
+				{(value) => {
+					return (Object.entries(value.cart).length > 0) ?
+						(<RouterLink to={"/checkout"}>
+							<Button 
+								className={classes.checkout_link} 
+								variant='contained' 
+								size='large'
+								onClick={toggleDrawer(false)}>
+								Checkout
+							</Button>
+						</RouterLink>) : <></>
 				}}
 			</CartContext.Consumer>
 		</SwipeableDrawer>

@@ -23,11 +23,11 @@ function EditContactInfo(props) {
   const validate = (elements) => {
     let newValidation = {};
     //VALIDATE FIRST NAME
-    if (elements.firstName.value.trim().length == 0) {
+    if (elements.firstName.value.trim().length === 0) {
       newValidation["firstName"] = "Please provide a valid first name";
     }
     //VALIDATE LAST NAME
-    if (elements.lastName.value.trim().length == 0) {
+    if (elements.lastName.value.trim().length === 0) {
       newValidation["lastName"] = "Please provide a valid last name";
     }
     //VALIDATE EMAIL ADDRESS

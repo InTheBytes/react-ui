@@ -2,8 +2,8 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 import OrderDetails from "./OrderDetails";
-import OrderHistory from "./OrderHistory";
-import OrderListing from "./OrderListing";
+import OrderHistory from "./History/OrderHistory";
+import OrderListing from "./History/OrderListing";
 
 const order = (id) => {
   return {

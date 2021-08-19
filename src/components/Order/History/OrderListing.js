@@ -1,7 +1,7 @@
 import React from "react";
 import {Grid} from "@material-ui/core";
-import Location from "./Location.js";
-import {formatDate} from "./OrderPipes.js";
+import Location from "../Location.js";
+import {formatDate} from "../OrderPipes.js";
 
 function OrderListing(props) {
   const order = props.order;

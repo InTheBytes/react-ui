@@ -17,6 +17,7 @@ import {
   OrderHistory,
   Profile,
   ViewMenu,
+  OrderTrackingWrapper,
 } from "./components";
 
 import "./App.css";
@@ -24,6 +25,7 @@ import AuthContext from "./components/Authentication/AuthContext";
 import CartContext from "./components/Cart/CartContext";
 import CartBar from "./components/Cart/CartBar";
 import ResetPassword from "./components/Authentication/ResetPassword";
+import SubmitOrder from "./components/Order/SubmitOrder";
 
 function App(props) {
   const [sideDrawer, setSideDrawer] = React.useState(false);
@@ -49,10 +51,12 @@ function App(props) {
               <Route exact path="/logout" component={Logout} />
               <Route exact path="/success" component={ConfirmEmail} />
               <Route exact path="/search" component={Search} />
-              <Route path="/foods/:id" component={ViewFood} />
+              <Route path="/foods/:id" render={() => <ViewFood onAddToCart={setCartDrawer}/>} />
               <Route path="/restaurants/:id" component={ViewRestaurant} />
               <Route path="/menus/:id" component={ViewMenu} />
               <Route path="/reset-password/:token" component={ResetPassword} />
+              <Route path="/checkout" component={SubmitOrder} />
+              <Route path="/orders/:id" component={OrderTrackingWrapper} />
               <Route
                 path="/orders"
                 render={() => <OrderHistory auth={auth} />}

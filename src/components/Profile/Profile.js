@@ -12,17 +12,13 @@ function Profile(props) {
   const [isEditorOpened, setIsEditorOpened] = useState(false);
   const [changePassIsOpened, setChangePassIsOpened] = useState(false);
 
-  function fetchPage() {
-    return axios.get(`${process.env.REACT_APP_SL_API_URL}/user/profile`, {
-      headers: { Authentication: props.auth },
-    });
-  }
-
   useEffect(() => {
-    fetchPage().then((resp) => {
+    axios.get(`${process.env.REACT_APP_SL_API_URL}/user/profile`, {
+      headers: { Authentication: props.auth },
+    }).then((resp) => {
       setProfile(resp.data);
     });
-  }, []);
+  }, [props.auth]);
 
   return (
     <Container component="main" maxWidth="xs">

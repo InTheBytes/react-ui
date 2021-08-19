@@ -26,7 +26,7 @@ function ViewFood(props) {
 	}
 
 	function addToCart(e, food) {
-		let newCart = CartSystem.cart;
+		let newCart = Object.assign({}, CartSystem.cart);
 
 		if (CartSystem.cart[food['foodId']] === undefined) {
 			food['quantity'] = 1;
@@ -36,6 +36,7 @@ function ViewFood(props) {
 		}
 
 		CartSystem.setCart(newCart);
+		props.onAddToCart(true)
 	}
 
 	const useStyles = makeStyles((theme) => ({
