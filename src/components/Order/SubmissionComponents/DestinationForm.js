@@ -1,7 +1,7 @@
 import { Grid, MenuItem, Select, TextField } from '@material-ui/core';
 import React, {useState, useEffect} from 'react';
 
-function DestinationForm(props) {
+function DestinationForm({updateLocation}) {
 
     const [validations, setValidations] = useState({});
     const [unit, setUnit] = useState("")
@@ -83,14 +83,14 @@ function DestinationForm(props) {
         for (let val in values) {
             if (val.length === 0) return
         }
-        props.updateLocation({
+        updateLocation({
             unit: unit,
             street: street,
             city: city,
             state: state,
             zip: zip
         })
-    }, [unit, street, city, state, zip])
+    }, [unit, street, city, state, zip, updateLocation])
 
     return (
         <Grid container spacing={2}>

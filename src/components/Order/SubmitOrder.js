@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Container,
@@ -134,6 +134,10 @@ function SubmitOrder(props) {
     }
   };
 
+  const updateLocation = useCallback((newLocation) => {
+    setLocation(newLocation);
+  }, [])
+
   return (<>
     <Backdrop open={processing} className={classes.backdrop}>
         <CircularProgress />
@@ -169,7 +173,7 @@ function SubmitOrder(props) {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <DestinationForm
-                  updateLocation={setLocation}
+                  updateLocation={updateLocation}
                   aria-label="destination-form"
                 />
               </Grid>
